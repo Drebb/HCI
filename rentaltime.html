@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - CSU BikeRent</title>
+    <title>Timer - CSU BikeRent</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="CSS/global.css" />
   </head>
-  <body class="bg-Lbg text-Ltext font-outfit">
+  <body class="bg-Lbg text-gray-800 font-outfit">
     <!-- Navbar -->
     <nav class="bg-Lprimary shadow-md">
       <div
@@ -290,116 +290,109 @@
       </div>
     </nav>
 
-    <!-- Dashboard Section -->
+    <!-- Timer Section -->
     <section class="min-h-screen py-8 px-4">
-      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-8">
-        <!-- Personalized Welcome Message -->
-        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg">
+      <div class="container mx-auto px-6 md:px-12">
+        <!-- Header -->
+        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg mb-8">
           <h2 class="text-2xl md:text-3xl font-semibold text-gray-800">
-            Welcome back, Arian!
+            Active Rentals Timer
           </h2>
           <p class="text-gray-600 mt-2">
-            Here’s an overview of your bike rentals and activities.
+            Track current bike rentals and their remaining time
           </p>
         </div>
 
-        <!-- Dashboard Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Bikes Available -->
-          <div class="bg-Lprimary p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">Bikes Available</h3>
-            <p class="text-3xl font-bold text-gray-900">15</p>
-          </div>
-
-          <!-- Bikes Rented -->
-          <div class="bg-Laccent2 p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">Bikes Rented</h3>
-            <p class="text-3xl font-bold text-gray-900">5</p>
-          </div>
-
-          <!-- Bikes in Maintenance -->
-          <div class="bg-red-300 p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">
-              Bikes in Maintenance
-            </h3>
-            <p class="text-3xl font-bold text-gray-900">2</p>
-          </div>
-        </div>
-
-        <!-- Currently Rented Section -->
-        <div class="bg-white p-6 rounded-2xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Currently Rented</h3>
-
-          <div class="mt-6">
-            <div class="flex flex-col md:flex-row gap-6">
-              <!-- Bike Image -->
-              <div class="flex justify-center md:justify-start">
-                <img
-                  src="images/MountBike.jpg"
-                  alt="Bike Image"
-                  class="w-36 h-36 rounded-xl object-contain shadow-sm"
-                />
-              </div>
-
+        <!-- Timer Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Timer Card -->
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-start justify-between">
               <!-- Bike Info -->
-              <div class="flex-1 space-y-3">
-                <div>
-                  <p class="text-lg font-semibold text-gray-800">Bike #3</p>
-                  <p class="text-sm text-gray-500">Location: Masawa Hall</p>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <img
+                    src="images/MountBike.jpg"
+                    alt="Mountain Bike"
+                    class="w-16 h-16 object-cover rounded-lg"
+                  />
+                  <div>
+                    <h3 class="text-xl font-bold">Mountain Bike</h3>
+                    <p class="text-sm text-gray-600">Main Gate Station</p>
+                  </div>
                 </div>
 
-                <div class="text-sm text-gray-700 space-y-1">
-                  <p><span class="font-medium">Type:</span> Mountain Bike</p>
-                  <p><span class="font-medium">Duration:</span> 2 hours</p>
-                  <p>
-                    <span class="font-medium">Return Station:</span> Main Gate
+                <!-- Renter Info -->
+                <div class="mb-4">
+                  <p class="text-sm">
+                    <i class="fas fa-user mr-2 text-Lprimary"></i>
+                    Rented by: Student
+                  </p>
+                  <p class="text-sm">
+                    <i class="fas fa-clock mr-2 text-Lprimary"></i>
+                    Return Time: <span class="font-medium">11:30 AM</span>
                   </p>
                 </div>
               </div>
 
-              <!-- Timer & Action Buttons -->
-              <div
-                class="flex flex-col justify-between items-center md:items-end gap-4"
-              >
-                <!-- Timer -->
-                <div class="text-center md:text-right">
-                  <p class="text-3xl font-extrabold text-gray-900">00:23:41</p>
-                  <p class="text-sm text-gray-500">Time Remaining</p>
-                </div>
-
-                <!-- Buttons -->
-                <div class="flex flex-col gap-2 w-full md:w-40">
-                  <button
-                    class="w-full px-4 py-2 bg-red-300 text-Ltext rounded hover:bg-red-500 transition duration-200"
-                  >
-                    End Rental
-                  </button>
-                  <button
-                    class="w-full px-4 py-2 bg-Lsecondary text-Ltext rounded hover:bg-blue-500 transition duration-200"
-                  >
-                    Extend Time
-                  </button>
+              <!-- Timer Circle -->
+              <div class="relative w-20 h-20">
+                <svg class="transform -rotate-90 w-20 h-20">
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r="35"
+                    class="text-gray-200"
+                    stroke-width="6"
+                    fill="transparent"
+                  />
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r="35"
+                    class="text-Lprimary"
+                    stroke-width="6"
+                    fill="transparent"
+                    stroke-dasharray="219.91"
+                    stroke-dashoffset="65.97"
+                  />
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="text-lg font-bold" data-timer>45:30</span>
                 </div>
               </div>
             </div>
+
+            <!-- Time Progress -->
+            <div class="mt-4">
+              <div class="h-2 bg-gray-200 rounded-full">
+                <div
+                  class="h-2 bg-Lprimary rounded-full w-3/4"
+                  style="width: 75%"
+                ></div>
+              </div>
+              <div class="flex justify-between text-sm mt-1">
+                <span>Start: 9:00 AM</span>
+                <span>End: 11:30 AM</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Add more timer cards as needed -->
         </div>
 
-        <!-- Google Map Placeholder (Only shown if no active rental) -->
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold text-gray-700">
-            Bike Rental Locations
-          </h3>
-          <div class="mt-4">
-            <img
-              src="https://placehold.co/800x400?text=Google+Map"
-              alt="Google Map"
-              class="w-full h-auto rounded-lg"
-            />
-          </div>
+        <!-- Refresh Button -->
+        <div class="mt-8 flex justify-center">
+          <button
+            class="bg-Lprimary text-Ltext px-6 py-3 rounded-full hover:bg-green-700 transition flex items-center gap-2"
+          >
+            <i class="fas fa-sync-alt"></i>
+            Refresh Timers
+          </button>
         </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer class="bg-Lprimary text-Ltext py-10">
       <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
@@ -670,6 +663,45 @@
         const chatModal = document.getElementById("chatModal");
         chatModal.classList.toggle("hidden");
       }
+      // Timer Update Logic
+      function updateTimers() {
+        document.querySelectorAll("[data-timer]").forEach((timer) => {
+          // Example end time (replace with actual return time from data)
+          const endTime = new Date();
+          endTime.setHours(endTime.getHours() + 1);
+          endTime.setMinutes(endTime.getMinutes() + 30);
+
+          const now = new Date();
+          const diff = endTime - now;
+
+          if (diff > 0) {
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            timer.textContent = `${minutes
+              .toString()
+              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+            // Update progress circle
+            const circle = timer
+              .closest(".relative")
+              .querySelector("circle:last-child");
+            const totalTime = endTime - new Date(timer.dataset.startTime);
+            const elapsed = now - new Date(timer.dataset.startTime);
+            const percentage = (elapsed / totalTime) * 219.91;
+            circle.style.strokeDashoffset = 219.91 - percentage;
+          } else {
+            timer.textContent = "00:00";
+            timer.closest(".bg-white").classList.add("opacity-50");
+          }
+        });
+      }
+
+      // Update timers every second
+      setInterval(updateTimers, 1000);
+      updateTimers(); // Initial update
+
+      // Refresh button
+      document.querySelector("button").addEventListener("click", updateTimers);
     </script>
   </body>
 </html>

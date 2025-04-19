@@ -25,53 +25,72 @@
     <!-- Navbar -->
     <nav class="bg-Lprimary shadow-md">
       <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+        class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
       >
-        <!-- Logo and Brand Name -->
-        <div class="text-xl md:text-2xl font-bold text-Ltext">
-          <a href="index.html" class="flex items-center text-Ltext">
+        <!-- Left: Logo -->
+        <div class="flex items-center space-x-2">
+          <a
+            href="index.html"
+            class="flex items-center text-Ltext text-xl md:text-2xl font-bold"
+          >
             <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
           </a>
         </div>
 
-        <!-- Navigation Links -->
-        <div class="hidden md:flex space-x-8">
-          <a href="dashboard.html" class="text-md md:text-lg text-Ltext"
-            >Dashboard</a
-          >
-          <a href="rental.html" class="text-md md:text-lg text-Ltext">Rental</a>
-          <a href="faq.html" class="text-md md:text-lg text-Ltext">FAQ</a>
-        </div>
-
-        <!-- User Account and Notifications -->
+        <!-- Right: Nav + Notifications + Account (Desktop) -->
         <div class="flex items-center space-x-6">
-          <!-- Notification Bell -->
-          <button
-            class="text-Dtext hover:text-gray-200 relative"
-            id="notificationBell"
-          >
-            <i class="fas fa-bell text-lg text-Ltext"></i>
-            <!-- Notification Dropdown -->
+          <!-- Desktop Navigation Links -->
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="dashboard.html"
+              class="text-md md:text-lg text-Ltext hover:underline"
+              >Dashboard</a
+            >
+            <a
+              href="rental.html"
+              class="text-md md:text-lg text-Ltext hover:underline"
+              >Rent-a-Bike</a
+            >
+            <a
+              href="rentaltime.html"
+              class="text-md md:text-lg text-Ltext hover:underline"
+              >Rent-Timer</a
+            >
+            <a
+              href="faq.html"
+              class="text-md md:text-lg text-Ltext hover:underline"
+              >FAQ</a
+            >
+          </div>
+
+          <!-- Notification Bell (Desktop) -->
+          <div class="hidden md:block relative">
+            <button
+              class="text-Ltext hover:text-gray-200"
+              id="notificationBell"
+            >
+              <i class="fas fa-bell text-lg"></i>
+            </button>
             <div
-              class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden notification-dropdown"
+              class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden z-50"
               id="notificationDropdown"
             >
               <div class="py-2 px-4 text-sm text-gray-700">
                 <h3 class="font-semibold">Recent Notifications</h3>
                 <ul class="space-y-2">
-                  <li class="border-b border-gray-200 py-2">
+                  <li class="border-b border-gray-200 py-2 notification-item">
                     <p class="font-medium text-gray-800">New rental request</p>
                     <p class="text-gray-600 text-sm">
                       A user has rented a bike (Mountain Bike).
                     </p>
                   </li>
-                  <li class="border-b border-gray-200 py-2">
+                  <li class="border-b border-gray-200 py-2 notification-item">
                     <p class="font-medium text-gray-800">Bike returned</p>
                     <p class="text-gray-600 text-sm">
                       A user returned the bike (City Bike).
                     </p>
                   </li>
-                  <li class="border-b border-gray-200 py-2">
+                  <li class="border-b border-gray-200 py-2 notification-item">
                     <p class="font-medium text-gray-800">
                       Maintenance reminder
                     </p>
@@ -79,7 +98,7 @@
                       The bike #5 (Road Bike) is under maintenance.
                     </p>
                   </li>
-                  <li class="border-b border-gray-200 py-2">
+                  <li class="border-b border-gray-200 py-2 notification-item">
                     <p class="font-medium text-gray-800">
                       Upcoming rental expiration
                     </p>
@@ -87,7 +106,7 @@
                       Your rental (Mountain Bike) expires in 2 hours.
                     </p>
                   </li>
-                  <li class="py-2">
+                  <li class="py-2 notification-item">
                     <p class="font-medium text-gray-800">Account updated</p>
                     <p class="text-gray-600 text-sm">
                       Your email address has been updated successfully.
@@ -96,32 +115,175 @@
                 </ul>
               </div>
             </div>
-          </button>
+          </div>
 
-          <!-- Account Dropdown -->
-          <div class="relative">
+          <!-- Account Dropdown (Desktop) -->
+          <div class="hidden md:block relative">
             <button
-              class="text-Dtext hover:text-gray-200 flex items-center space-x-2"
+              class="text-Ltext hover:text-gray-200 flex items-center space-x-2"
               id="accountButton"
             >
-              <!-- Profile Picture -->
               <img
                 src="images/Profile.jpg"
                 alt="Profile"
                 class="w-8 h-8 rounded-full object-cover border border-black-300"
               />
-              <span class="text-Ltext">Arian</span>
-              <i class="fa-solid fa-caret-down text-Ltext text-sm"></i>
+              <span>Arian</span>
+              <i class="fa-solid fa-caret-down text-sm"></i>
             </button>
             <div
-              class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden account-dropdown"
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden z-50"
               id="accountDropdown"
             >
               <div class="py-2 px-4 text-sm text-gray-700">
-                <a href="account.html" class="block py-1">Account Settings</a>
-                <a href="#" class="block py-1">Rent History</a>
-                <a href="logout.html" class="block py-1">Logout</a>
+                <a
+                  href="account.html"
+                  class="block py-1 hover:bg-gray-100 rounded px-2"
+                  >Account Settings</a
+                >
+                <a
+                  href="rentalhistory.html"
+                  class="block py-1 hover:bg-gray-100 rounded px-2"
+                  >Rent History</a
+                >
+                <a
+                  href="logout.html"
+                  class="block py-1 hover:bg-gray-100 rounded px-2"
+                  >Logout</a
+                >
               </div>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuButton"
+            class="md:hidden text-Ltext hover:text-gray-200"
+          >
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobileMenu"
+        class="absolute top-16 left-0 right-0 bg-Lprimary shadow-lg hidden z-50 w-full"
+      >
+        <div class="px-4 py-2 space-y-3">
+          <a
+            href="dashboard.html"
+            class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+            >Dashboard</a
+          >
+          <a
+            href="rental.html"
+            class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+            >Rent-a-Bike</a
+          >
+          <a
+            href="rentaltime.html"
+            class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+            >Rent-Timer</a
+          >
+          <a
+            href="faq.html"
+            class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+            >FAQ</a
+          >
+
+          <!-- Mobile Notification Section -->
+          <div class="block">
+            <button
+              id="mobileNotificationButton"
+              class="w-full text-left text-Ltext hover:bg-Lprimary2 p-2 rounded flex items-center justify-between"
+            >
+              <div>
+                <i class="fas fa-bell mr-2"></i>
+                <span>Notifications</span>
+              </div>
+              <i
+                class="fas fa-chevron-down text-sm"
+                id="notificationChevron"
+              ></i>
+            </button>
+            <div
+              id="mobileNotifications"
+              class="mt-2 bg-white rounded-lg shadow hidden"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <h3 class="font-semibold">Recent Notifications</h3>
+                <ul class="space-y-2">
+                  <li class="border-b border-gray-200 py-2 notification-item">
+                    <p class="font-medium text-gray-800">New rental request</p>
+                    <p class="text-gray-600 text-sm">
+                      A user has rented a bike (Mountain Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2 notification-item">
+                    <p class="font-medium text-gray-800">Bike returned</p>
+                    <p class="text-gray-600 text-sm">
+                      A user returned the bike (City Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2 notification-item">
+                    <p class="font-medium text-gray-800">
+                      Maintenance reminder
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      The bike #5 (Road Bike) is under maintenance.
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2 notification-item">
+                    <p class="font-medium text-gray-800">
+                      Upcoming rental expiration
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      Your rental (Mountain Bike) expires in 2 hours.
+                    </p>
+                  </li>
+                  <li class="py-2 notification-item">
+                    <p class="font-medium text-gray-800">Account updated</p>
+                    <p class="text-gray-600 text-sm">
+                      Your email address has been updated successfully.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Account Section -->
+          <div class="block">
+            <button
+              id="mobileAccountButton"
+              class="w-full text-left text-Ltext hover:bg-Lprimary2 p-2 rounded flex items-center justify-between"
+            >
+              <div>
+                <i class="fas fa-user-circle mr-2"></i>
+                <span>Account</span>
+              </div>
+              <i class="fas fa-chevron-down text-sm" id="accountChevron"></i>
+            </button>
+            <div
+              id="mobileAccount"
+              class="mt-2 bg-white rounded-lg shadow hidden"
+            >
+              <a
+                href="account.html"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Account Settings</a
+              >
+              <a
+                href="rentalhistory.html"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Rent History</a
+              >
+              <a
+                href="logout.html"
+                class="block px-4 py-2 text-sm hover:bg-gray-100"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -476,24 +638,163 @@
   </div>
 
     <script>
-
-       // Toggle the notification dropdown
-       const bellButton = document.getElementById("notificationBell");
+      // Global variables
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const accountButton = document.getElementById("accountButton");
+      const accountDropdown = document.getElementById("accountDropdown");
+      const notificationBell = document.getElementById("notificationBell");
       const notificationDropdown = document.getElementById(
         "notificationDropdown"
       );
 
-      bellButton.addEventListener("click", () => {
-        notificationDropdown.classList.toggle("hidden");
+      // Mobile specific elements
+      const mobileNotificationButton = document.getElementById(
+        "mobileNotificationButton"
+      );
+      const mobileNotifications = document.getElementById(
+        "mobileNotifications"
+      );
+      const mobileAccountButton = document.getElementById(
+        "mobileAccountButton"
+      );
+      const mobileAccount = document.getElementById("mobileAccount");
+      const notificationChevron = document.getElementById(
+        "notificationChevron"
+      );
+      const accountChevron = document.getElementById("accountChevron");
+
+      // Function to close all menus
+      function closeAllMenus() {
+        // Close desktop dropdowns
+        accountDropdown.classList.add("hidden");
+        notificationDropdown.classList.add("hidden");
+
+        // Close mobile submenus but keep main mobile menu if needed
+        mobileNotifications.classList.add("hidden");
+        mobileAccount.classList.add("hidden");
+
+        // Reset chevrons
+        notificationChevron.classList.remove("fa-chevron-up");
+        notificationChevron.classList.add("fa-chevron-down");
+        accountChevron.classList.remove("fa-chevron-up");
+        accountChevron.classList.add("fa-chevron-down");
+      }
+
+      // Toggle mobile menu
+      mobileMenuButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        mobileMenu.classList.toggle("hidden");
+
+        // Close all other dropdowns when toggling mobile menu
+        closeAllMenus();
       });
 
+      // Desktop: Account dropdown toggle
+      if (accountButton) {
+        accountButton.addEventListener("click", (e) => {
+          e.stopPropagation();
 
-        // Toggle the account dropdown
-        const accountButton = document.getElementById("accountButton");
-      const accountDropdown = document.getElementById("accountDropdown");
+          // Close other menus first
+          notificationDropdown.classList.add("hidden");
 
-      accountButton.addEventListener("click", () => {
-        accountDropdown.classList.toggle("hidden");
+          // Toggle account dropdown
+          accountDropdown.classList.toggle("hidden");
+        });
+      }
+
+      // Desktop: Notification dropdown toggle
+      if (notificationBell) {
+        notificationBell.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          // Close other menus first
+          accountDropdown.classList.add("hidden");
+
+          // Toggle notification dropdown
+          notificationDropdown.classList.toggle("hidden");
+        });
+      }
+
+      // Mobile: Notification section toggle
+      mobileNotificationButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Close other mobile submenus
+        mobileAccount.classList.add("hidden");
+        accountChevron.classList.remove("fa-chevron-up");
+        accountChevron.classList.add("fa-chevron-down");
+
+        // Toggle notifications
+        mobileNotifications.classList.toggle("hidden");
+
+        // Toggle chevron icon
+        if (mobileNotifications.classList.contains("hidden")) {
+          notificationChevron.classList.remove("fa-chevron-up");
+          notificationChevron.classList.add("fa-chevron-down");
+        } else {
+          notificationChevron.classList.remove("fa-chevron-down");
+          notificationChevron.classList.add("fa-chevron-up");
+        }
+      });
+
+      // Mobile: Account section toggle
+      mobileAccountButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Close other mobile submenus
+        mobileNotifications.classList.add("hidden");
+        notificationChevron.classList.remove("fa-chevron-up");
+        notificationChevron.classList.add("fa-chevron-down");
+
+        // Toggle account menu
+        mobileAccount.classList.toggle("hidden");
+
+        // Toggle chevron icon
+        if (mobileAccount.classList.contains("hidden")) {
+          accountChevron.classList.remove("fa-chevron-up");
+          accountChevron.classList.add("fa-chevron-down");
+        } else {
+          accountChevron.classList.remove("fa-chevron-down");
+          accountChevron.classList.add("fa-chevron-up");
+        }
+      });
+
+      // Close menus when clicking outside
+      document.addEventListener("click", (e) => {
+        // Don't close if clicking inside the mobile menu
+        if (
+          mobileMenu.contains(e.target) &&
+          !mobileMenuButton.contains(e.target)
+        ) {
+          return;
+        }
+
+        // Close desktop dropdowns
+        accountDropdown.classList.add("hidden");
+        notificationDropdown.classList.add("hidden");
+
+        // Close mobile menu if clicking outside
+        if (!mobileMenuButton.contains(e.target)) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      // Close mobile menu on window resize (if desktop)
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileMenu.classList.add("hidden");
+
+          // Also close mobile submenus
+          mobileNotifications.classList.add("hidden");
+          mobileAccount.classList.add("hidden");
+
+          // Reset chevrons
+          notificationChevron.classList.remove("fa-chevron-up");
+          notificationChevron.classList.add("fa-chevron-down");
+          accountChevron.classList.remove("fa-chevron-up");
+          accountChevron.classList.add("fa-chevron-down");
+        }
       });
 
 

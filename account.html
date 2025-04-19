@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer - CSU BikeRent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/global.css" />
+  </head>
+  <body class="bg-Lbg text-gray-800 font-outfit">
+    <!-- Navbar -->
+    <nav class="bg-Lprimary shadow-md">
+        <div
+          class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
+        >
+          <!-- Left: Logo -->
+          <div class="flex items-center space-x-2">
+            <a
+              href="index.html"
+              class="flex items-center text-Ltext text-xl md:text-2xl font-bold"
+            >
+              <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+            </a>
+          </div>
+  
+          <!-- Right: Nav + Notifications + Account (Desktop) -->
+          <div class="flex items-center space-x-6">
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+              <a
+                href="dashboard.html"
+                class="text-md md:text-lg text-Ltext hover:underline"
+                >Dashboard</a
+              >
+              <a
+                href="rental.html"
+                class="text-md md:text-lg text-Ltext hover:underline"
+                >Rent-a-Bike</a
+              >
+              <a
+                href="rentaltime.html"
+                class="text-md md:text-lg text-Ltext hover:underline"
+                >Rent-Timer</a
+              >
+              <a
+                href="faq.html"
+                class="text-md md:text-lg text-Ltext hover:underline"
+                >FAQ</a
+              >
+            </div>
+  
+            <!-- Notification Bell (Desktop) -->
+            <div class="hidden md:block relative">
+              <button
+                class="text-Ltext hover:text-gray-200"
+                id="notificationBell"
+              >
+                <i class="fas fa-bell text-lg"></i>
+              </button>
+              <div
+                class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden z-50"
+                id="notificationDropdown"
+              >
+                <div class="py-2 px-4 text-sm text-gray-700">
+                  <h3 class="font-semibold">Recent Notifications</h3>
+                  <ul class="space-y-2">
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">New rental request</p>
+                      <p class="text-gray-600 text-sm">
+                        A user has rented a bike (Mountain Bike).
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">Bike returned</p>
+                      <p class="text-gray-600 text-sm">
+                        A user returned the bike (City Bike).
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">
+                        Maintenance reminder
+                      </p>
+                      <p class="text-gray-600 text-sm">
+                        The bike #5 (Road Bike) is under maintenance.
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">
+                        Upcoming rental expiration
+                      </p>
+                      <p class="text-gray-600 text-sm">
+                        Your rental (Mountain Bike) expires in 2 hours.
+                      </p>
+                    </li>
+                    <li class="py-2 notification-item">
+                      <p class="font-medium text-gray-800">Account updated</p>
+                      <p class="text-gray-600 text-sm">
+                        Your email address has been updated successfully.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Account Dropdown (Desktop) -->
+            <div class="hidden md:block relative">
+              <button
+                class="text-Ltext hover:text-gray-200 flex items-center space-x-2"
+                id="accountButton"
+              >
+                <img
+                  src="images/Profile.jpg"
+                  alt="Profile"
+                  class="w-8 h-8 rounded-full object-cover border border-black-300"
+                />
+                <span>Arian</span>
+                <i class="fa-solid fa-caret-down text-sm"></i>
+              </button>
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden z-50"
+                id="accountDropdown"
+              >
+                <div class="py-2 px-4 text-sm text-gray-700">
+                  <a
+                    href="account.html"
+                    class="block py-1 hover:bg-gray-100 rounded px-2"
+                    >Account Settings</a
+                  >
+                  <a
+                    href="rentalhistory.html"
+                    class="block py-1 hover:bg-gray-100 rounded px-2"
+                    >Rent History</a
+                  >
+                  <a
+                    href="logout.html"
+                    class="block py-1 hover:bg-gray-100 rounded px-2"
+                    >Logout</a
+                  >
+                </div>
+              </div>
+            </div>
+  
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuButton"
+              class="md:hidden text-Ltext hover:text-gray-200"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+  
+        <!-- Mobile Menu Dropdown -->
+        <div
+          id="mobileMenu"
+          class="absolute top-16 left-0 right-0 bg-Lprimary shadow-lg hidden z-50 w-full"
+        >
+          <div class="px-4 py-2 space-y-3">
+            <a
+              href="dashboard.html"
+              class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+              >Dashboard</a
+            >
+            <a
+              href="rental.html"
+              class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+              >Rent-a-Bike</a
+            >
+            <a
+              href="rentaltime.html"
+              class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+              >Rent-Timer</a
+            >
+            <a
+              href="faq.html"
+              class="block text-Ltext hover:bg-Lprimary2 p-2 rounded"
+              >FAQ</a
+            >
+  
+            <!-- Mobile Notification Section -->
+            <div class="block">
+              <button
+                id="mobileNotificationButton"
+                class="w-full text-left text-Ltext hover:bg-Lprimary2 p-2 rounded flex items-center justify-between"
+              >
+                <div>
+                  <i class="fas fa-bell mr-2"></i>
+                  <span>Notifications</span>
+                </div>
+                <i
+                  class="fas fa-chevron-down text-sm"
+                  id="notificationChevron"
+                ></i>
+              </button>
+              <div
+                id="mobileNotifications"
+                class="mt-2 bg-white rounded-lg shadow hidden"
+              >
+                <div class="py-2 px-4 text-sm text-gray-700">
+                  <h3 class="font-semibold">Recent Notifications</h3>
+                  <ul class="space-y-2">
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">New rental request</p>
+                      <p class="text-gray-600 text-sm">
+                        A user has rented a bike (Mountain Bike).
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">Bike returned</p>
+                      <p class="text-gray-600 text-sm">
+                        A user returned the bike (City Bike).
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">
+                        Maintenance reminder
+                      </p>
+                      <p class="text-gray-600 text-sm">
+                        The bike #5 (Road Bike) is under maintenance.
+                      </p>
+                    </li>
+                    <li class="border-b border-gray-200 py-2 notification-item">
+                      <p class="font-medium text-gray-800">
+                        Upcoming rental expiration
+                      </p>
+                      <p class="text-gray-600 text-sm">
+                        Your rental (Mountain Bike) expires in 2 hours.
+                      </p>
+                    </li>
+                    <li class="py-2 notification-item">
+                      <p class="font-medium text-gray-800">Account updated</p>
+                      <p class="text-gray-600 text-sm">
+                        Your email address has been updated successfully.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Mobile Account Section -->
+            <div class="block">
+              <button
+                id="mobileAccountButton"
+                class="w-full text-left text-Ltext hover:bg-Lprimary2 p-2 rounded flex items-center justify-between"
+              >
+                <div>
+                  <i class="fas fa-user-circle mr-2"></i>
+                  <span>Account</span>
+                </div>
+                <i class="fas fa-chevron-down text-sm" id="accountChevron"></i>
+              </button>
+              <div
+                id="mobileAccount"
+                class="mt-2 bg-white rounded-lg shadow hidden"
+              >
+                <a
+                  href="account.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >Account Settings</a
+                >
+                <a
+                  href="rentalhistory.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >Rent History</a
+                >
+                <a
+                  href="logout.html"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Account Section -->
+    <section class="min-h-screen py-8 px-4">
+      <div class="container mx-auto px-6 md:px-12">
+        <!-- Profile Header -->
+        <div class="bg-Lprimary2 p-6 rounded-xl shadow-lg mb-8">
+          <div class="flex items-center gap-6">
+            <div class="relative">
+              <img
+                src="images/Profile.jpg"
+                alt="Profile"
+                class="w-24 h-24 rounded-full border-4 border-Lprimary object-cover"
+              />
+              <button
+                class="absolute bottom-0 right-0 bg-Lprimary text-Ltext p-2 rounded-full hover:bg-green-700 transition"
+              >
+                <i class="fas fa-pencil text-sm"></i>
+              </button>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold">Arian Prisco</h1>
+              <p class="text-gray-600">arian.prisco@csu.edu.ph</p>
+              <p class="text-sm text-gray-600 mt-1">Member since 2023</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="flex flex-wrap gap-4 mb-8 border-b border-gray-200">
+          <button
+            data-tab="personal"
+            class="tab-link active px-4 py-2 text-lg font-medium text-gray-600 hover:text-Lprimary transition border-b-2 border-transparent hover:border-Lprimary"
+          >
+            <i class="fas fa-user-circle mr-2"></i>
+            Personal Information
+          </button>
+          <button
+            data-tab="security"
+            class="tab-link px-4 py-2 text-lg font-medium text-gray-600 hover:text-Lprimary transition border-b-2 border-transparent hover:border-Lprimary"
+          >
+            <i class="fas fa-shield-alt mr-2"></i>
+            Security
+          </button>
+          <button
+            data-tab="payment"
+            class="tab-link px-4 py-2 text-lg font-medium text-gray-600 hover:text-Lprimary transition border-b-2 border-transparent hover:border-Lprimary"
+          >
+            <i class="fas fa-credit-card mr-2"></i>
+            Payment Methods
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+          <!-- Personal Information Tab -->
+          <div id="personal" class="tab-content active">
+            <form class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    value="Arian Prisco"
+                    class="w-full p-3 border rounded-lg"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    value="arian.prisco@csu.edu.ph"
+                    disabled
+                    class="w-full p-3 border rounded-lg bg-gray-100"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value="+63 912 345 6789"
+                    class="w-full p-3 border rounded-lg"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Address</label>
+                  <input
+                    type="text"
+                    value="CSU Campus, Butuan City"
+                    class="w-full p-3 border rounded-lg"
+                  />
+                </div>
+              </div>
+              <button
+                class="bg-Lprimary text-Ltext px-6 py-3 rounded-full hover:bg-green-700 transition"
+              >
+                Save Changes
+              </button>
+            </form>
+          </div>
+
+          <!-- Security Tab -->
+          <div id="security" class="tab-content hidden">
+            <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Change Password</h3>
+                <form class="space-y-4 max-w-md">
+                  <div>
+                    <label class="block text-sm font-medium mb-2"
+                      >Current Password</label
+                    >
+                    <input
+                      type="password"
+                      class="w-full p-3 border rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium mb-2"
+                      >New Password</label
+                    >
+                    <input
+                      type="password"
+                      class="w-full p-3 border rounded-lg"
+                    />
+                  </div>
+                  <button
+                    class="bg-Lprimary text-Ltext px-6 py-3 rounded-full hover:bg-green-700 transition"
+                  >
+                    Update Password
+                  </button>
+                </form>
+              </div>
+
+              <div class="pt-6 border-t border-gray-200">
+                <h3 class="text-lg font-semibold mb-4">
+                  Two-Factor Authentication
+                </h3>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm text-gray-600">
+                      Add extra security to your account
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="text-sm">Disabled</span>
+                    <button
+                      class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition-colors"
+                    >
+                      <span class="sr-only">Enable 2FA</span>
+                      <span
+                        class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-1"
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="mt-4 text-sm text-Lprimary hover:underline flex items-center"
+                >
+                  <i class="fas fa-qrcode mr-2"></i>
+                  Set up authenticator app
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Methods Tab -->
+<div id="payment" class="tab-content hidden">
+    <div class="space-y-6">
+        <button
+            onclick="togglePaymentModal()"
+            class="bg-Lprimary text-Ltext px-6 py-3 rounded-full hover:bg-green-700 transition"
+        >
+            <i class="fas fa-plus mr-2"></i>
+            Add GCash Account
+        </button>
+
+        <!-- Saved GCash Accounts -->
+        <div class="space-y-4">
+            <div class="p-4 border rounded-lg flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-mobile-alt text-3xl text-green-600"></i>
+                    <div>
+                        <p class="font-medium">GCash •••• 6789</p>
+                        <p class="text-sm text-gray-600">Registered: Arian Prisco</p>
+                    </div>
+                </div>
+                <button class="text-red-600 hover:text-red-700">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+
+            <div class="p-4 border rounded-lg flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-mobile-alt text-3xl text-green-600"></i>
+                    <div>
+                        <p class="font-medium">GCash •••• 1234</p>
+                        <p class="text-sm text-gray-600">Registered: Arian Prisco</p>
+                    </div>
+                </div>
+                <button class="text-red-600 hover:text-red-700">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-Lprimary text-Ltext py-10">
+      <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+        <!-- CSU BikeRent Info Section -->
+        <div class="space-y-4">
+          <h5 class="font-bold">CSU BikeRent</h5>
+          <p>
+            Sustainable campus transportation solution for Caraga State
+            University students and faculty.
+          </p>
+          <div class="flex space-x-4 text-2xl">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Service Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Services</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#how" class="hover:underline">How It Works</a></li>
+            <li><a href="#" class="hover:underline">Pricing</a></li>
+            <li><a href="#features" class="hover:underline">Locations</a></li>
+            <li><a href="#testimonials" class="hover:underline">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Account</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="hover:underline">Login</a></li>
+            <li><a href="#" class="hover:underline">Register</a></li>
+            <li><a href="#" class="hover:underline">Dashboard</a></li>
+            <li><a href="#" class="hover:underline">Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Get in Touch</h6>
+          <ul class="space-y-1 text-sm">
+            <li>
+              <i class="fas fa-map-marker-alt mr-2"></i>Student Center, CSU
+              Campus
+            </li>
+            <li><i class="fas fa-envelope mr-2"></i>info@csubikerent.edu</li>
+            <li><i class="fas fa-phone mr-2"></i>(555) 123-4567</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Copyright -->
+      <div class="mt-10 text-center text-sm opacity-70">
+        &copy; 2025 CSU BikeRent. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Update the Payment Modal -->
+<!-- Payment Modal -->
+<div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-xl p-6 md:p-8 w-full max-w-md">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Add GCash Account</h3>
+                <button
+                    onclick="togglePaymentModal()"
+                    class="text-gray-500 hover:text-gray-700"
+                >
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">GCash Mobile Number</label>
+                    <input
+                        type="tel"
+                        placeholder="09XX XXX XXXX"
+                        class="w-full p-3 border rounded-lg"
+                        pattern="[0-9]{11}"
+                    />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Account Holder Name</label>
+                    <input
+                        type="text"
+                        placeholder="Arian Prisco"
+                        class="w-full p-3 border rounded-lg"
+                    />
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button
+                        type="button"
+                        onclick="togglePaymentModal()"
+                        class="px-6 py-3 rounded-full border hover:bg-gray-100"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        class="bg-Lprimary text-Ltext px-6 py-3 rounded-full hover:bg-green-700 transition"
+                    >
+                        Save Account
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Chat Button (Bottom Right) -->
+    <button
+      id="chatButton"
+      class="fixed bottom-6 right-6 p-4 bg-Lprimary text-Ltext rounded-full shadow-lg hover:bg-green-700 focus:outline-none"
+      onclick="toggleChatModal()"
+    >
+      <i class="fas fa-comment-alt"></i>
+    </button>
+
+    <!-- Chat modal -->
+    <div
+      id="chatModal"
+      class="fixed bottom-20 right-6 w-80 bg-white border rounded-lg shadow-lg hidden z-50"
+    >
+      <div
+        class="flex justify-between items-center bg-Lprimary text-Ltext p-3 rounded-t-lg"
+      >
+        <h3 class="text-lg font-semibold">Chat Support</h3>
+        <!-- Close Button -->
+        <button
+          onclick="toggleChatModal()"
+          class="text-Ltext text-2xl font-bold leading-none hover:text-gray-200"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="p-4 h-64 overflow-y-auto space-y-2">
+        <!-- Chat messages -->
+        <div class="text-sm text-gray-600">
+          Hello! How can I help you today?
+        </div>
+      </div>
+      <div class="p-3 border-t flex items-center gap-2">
+        <input
+          type="text"
+          class="flex-1 border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Type your message..."
+        />
+        <button
+          class="bg-Lprimary text-Ltext px-4 py-2 rounded hover:bg-green-700 text-sm font-medium"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Global variables
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const accountButton = document.getElementById("accountButton");
+      const accountDropdown = document.getElementById("accountDropdown");
+      const notificationBell = document.getElementById("notificationBell");
+      const notificationDropdown = document.getElementById(
+        "notificationDropdown"
+      );
+
+      // Mobile specific elements
+      const mobileNotificationButton = document.getElementById(
+        "mobileNotificationButton"
+      );
+      const mobileNotifications = document.getElementById(
+        "mobileNotifications"
+      );
+      const mobileAccountButton = document.getElementById(
+        "mobileAccountButton"
+      );
+      const mobileAccount = document.getElementById("mobileAccount");
+      const notificationChevron = document.getElementById(
+        "notificationChevron"
+      );
+      const accountChevron = document.getElementById("accountChevron");
+
+      // Function to close all menus
+      function closeAllMenus() {
+        // Close desktop dropdowns
+        accountDropdown.classList.add("hidden");
+        notificationDropdown.classList.add("hidden");
+
+        // Close mobile submenus but keep main mobile menu if needed
+        mobileNotifications.classList.add("hidden");
+        mobileAccount.classList.add("hidden");
+
+        // Reset chevrons
+        notificationChevron.classList.remove("fa-chevron-up");
+        notificationChevron.classList.add("fa-chevron-down");
+        accountChevron.classList.remove("fa-chevron-up");
+        accountChevron.classList.add("fa-chevron-down");
+      }
+
+      // Toggle mobile menu
+      mobileMenuButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        mobileMenu.classList.toggle("hidden");
+
+        // Close all other dropdowns when toggling mobile menu
+        closeAllMenus();
+      });
+
+      // Desktop: Account dropdown toggle
+      if (accountButton) {
+        accountButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          // Close other menus first
+          notificationDropdown.classList.add("hidden");
+
+          // Toggle account dropdown
+          accountDropdown.classList.toggle("hidden");
+        });
+      }
+
+      // Desktop: Notification dropdown toggle
+      if (notificationBell) {
+        notificationBell.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          // Close other menus first
+          accountDropdown.classList.add("hidden");
+
+          // Toggle notification dropdown
+          notificationDropdown.classList.toggle("hidden");
+        });
+      }
+
+      // Mobile: Notification section toggle
+      mobileNotificationButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Close other mobile submenus
+        mobileAccount.classList.add("hidden");
+        accountChevron.classList.remove("fa-chevron-up");
+        accountChevron.classList.add("fa-chevron-down");
+
+        // Toggle notifications
+        mobileNotifications.classList.toggle("hidden");
+
+        // Toggle chevron icon
+        if (mobileNotifications.classList.contains("hidden")) {
+          notificationChevron.classList.remove("fa-chevron-up");
+          notificationChevron.classList.add("fa-chevron-down");
+        } else {
+          notificationChevron.classList.remove("fa-chevron-down");
+          notificationChevron.classList.add("fa-chevron-up");
+        }
+      });
+
+      // Mobile: Account section toggle
+      mobileAccountButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Close other mobile submenus
+        mobileNotifications.classList.add("hidden");
+        notificationChevron.classList.remove("fa-chevron-up");
+        notificationChevron.classList.add("fa-chevron-down");
+
+        // Toggle account menu
+        mobileAccount.classList.toggle("hidden");
+
+        // Toggle chevron icon
+        if (mobileAccount.classList.contains("hidden")) {
+          accountChevron.classList.remove("fa-chevron-up");
+          accountChevron.classList.add("fa-chevron-down");
+        } else {
+          accountChevron.classList.remove("fa-chevron-down");
+          accountChevron.classList.add("fa-chevron-up");
+        }
+      });
+
+      // Close menus when clicking outside
+      document.addEventListener("click", (e) => {
+        // Don't close if clicking inside the mobile menu
+        if (
+          mobileMenu.contains(e.target) &&
+          !mobileMenuButton.contains(e.target)
+        ) {
+          return;
+        }
+
+        // Close desktop dropdowns
+        accountDropdown.classList.add("hidden");
+        notificationDropdown.classList.add("hidden");
+
+        // Close mobile menu if clicking outside
+        if (!mobileMenuButton.contains(e.target)) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      // Close mobile menu on window resize (if desktop)
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileMenu.classList.add("hidden");
+
+          // Also close mobile submenus
+          mobileNotifications.classList.add("hidden");
+          mobileAccount.classList.add("hidden");
+
+          // Reset chevrons
+          notificationChevron.classList.remove("fa-chevron-up");
+          notificationChevron.classList.add("fa-chevron-down");
+          accountChevron.classList.remove("fa-chevron-up");
+          accountChevron.classList.add("fa-chevron-down");
+        }
+      });
+           // Toggle the chat modal
+           function toggleChatModal() {
+        const chatModal = document.getElementById("chatModal");
+        chatModal.classList.toggle("hidden");
+      }
+
+          // Tab Switching
+    document.querySelectorAll('.tab-link').forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.dataset.tab;
+            
+            // Remove active classes from all tabs and contents
+            document.querySelectorAll('.tab-link').forEach(el => {
+                el.classList.remove('active', 'border-Lprimary', 'text-Lprimary');
+                el.classList.add('text-gray-600');
+            });
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('hidden');
+            });
+            
+            // Add active classes to clicked tab and corresponding content
+            button.classList.add('active', 'border-Lprimary', 'text-Lprimary');
+            button.classList.remove('text-gray-600');
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById(tabId).classList.remove('hidden');
+        });
+    });
+
+    // Initialize first tab as active
+    document.querySelector('.tab-link.active').click();
+
+      // Payment Modal
+      function togglePaymentModal() {
+        document.getElementById("paymentModal").classList.toggle("hidden");
+        document.body.classList.toggle("overflow-hidden");
+      }
+    </script>
+  </body>
+</html>

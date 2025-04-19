@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - CSU BikeRent</title>
+    <title>History - CSU BikeRent</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
@@ -21,7 +20,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="CSS/global.css" />
   </head>
-  <body class="bg-Lbg text-Ltext font-outfit">
+  <body class="bg-Lbg text-Ltext font-Outfit">
     <!-- Navbar -->
     <nav class="bg-Lprimary shadow-md">
       <div
@@ -290,116 +289,115 @@
       </div>
     </nav>
 
-    <!-- Dashboard Section -->
+    <!-- Rental History Section -->
     <section class="min-h-screen py-8 px-4">
-      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-8">
-        <!-- Personalized Welcome Message -->
-        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg">
+      <div class="container mx-auto px-6 md:px-12">
+        <!-- Header -->
+        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg mb-8">
           <h2 class="text-2xl md:text-3xl font-semibold text-gray-800">
-            Welcome back, Arian!
+            Rental History
           </h2>
           <p class="text-gray-600 mt-2">
-            Here’s an overview of your bike rentals and activities.
+            View your previous bike rental transactions
           </p>
         </div>
 
-        <!-- Dashboard Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Bikes Available -->
-          <div class="bg-Lprimary p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">Bikes Available</h3>
-            <p class="text-3xl font-bold text-gray-900">15</p>
-          </div>
-
-          <!-- Bikes Rented -->
-          <div class="bg-Laccent2 p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">Bikes Rented</h3>
-            <p class="text-3xl font-bold text-gray-900">5</p>
-          </div>
-
-          <!-- Bikes in Maintenance -->
-          <div class="bg-red-300 p-6 rounded-xl shadow-lg">
-            <h3 class="text-xl font-semibold text-Ltext">
-              Bikes in Maintenance
-            </h3>
-            <p class="text-3xl font-bold text-gray-900">2</p>
-          </div>
+        <!-- Search Bar -->
+        <div class="mb-6">
+          <input
+            type="text"
+            class="w-full p-3 rounded-lg shadow-md border border-gray-300"
+            placeholder="Search rentals..."
+            id="searchRentals"
+          />
         </div>
 
-        <!-- Currently Rented Section -->
-        <div class="bg-white p-6 rounded-2xl shadow-xl">
-          <h3 class="text-2xl font-bold text-gray-800">Currently Rented</h3>
+        <!-- Rental Table -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-Lprimary text-Ltext">
+                <tr>
+                  <th class="px-6 py-3 text-left text-sm">Date</th>
+                  <th class="px-6 py-3 text-left text-sm">Bike Model</th>
+                  <th class="px-6 py-3 text-left text-sm">Duration</th>
+                  <th class="px-6 py-3 text-left text-sm">Amount</th>
+                  <th class="px-6 py-3 text-left text-sm">Payment Method</th>
+                  <th class="px-6 py-3 text-left text-sm">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <!-- Rental Record 1 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-sm">2024-03-15</td>
+                  <td class="px-6 py-4 text-sm">Mountain Bike</td>
+                  <td class="px-6 py-4 text-sm">2 hours</td>
+                  <td class="px-6 py-4 text-sm">20₱</td>
+                  <td class="px-6 py-4 text-sm">
+                    <span class="inline-flex items-center">
+                      <i class="fa-solid fa-wallet mr-1"></i>
+                      GCash
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800"
+                    >
+                      Paid
+                    </span>
+                  </td>
+                </tr>
 
-          <div class="mt-6">
-            <div class="flex flex-col md:flex-row gap-6">
-              <!-- Bike Image -->
-              <div class="flex justify-center md:justify-start">
-                <img
-                  src="images/MountBike.jpg"
-                  alt="Bike Image"
-                  class="w-36 h-36 rounded-xl object-contain shadow-sm"
-                />
-              </div>
+                <!-- Rental Record 2 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-sm">2024-03-12</td>
+                  <td class="px-6 py-4 text-sm">Road Bike</td>
+                  <td class="px-6 py-4 text-sm">3.5 hours</td>
+                  <td class="px-6 py-4 text-sm">35₱ + 10₱ late fee</td>
+                  <td class="px-6 py-4 text-sm">
+                    <span class="inline-flex items-center">
+                      <i class="fa-solid fa-wallet mr-1"></i>
+                      GCash
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800"
+                    >
+                      Late Fee Applied
+                    </span>
+                  </td>
+                </tr>
 
-              <!-- Bike Info -->
-              <div class="flex-1 space-y-3">
-                <div>
-                  <p class="text-lg font-semibold text-gray-800">Bike #3</p>
-                  <p class="text-sm text-gray-500">Location: Masawa Hall</p>
-                </div>
+                <!-- Add more records as needed -->
+              </tbody>
+            </table>
+          </div>
 
-                <div class="text-sm text-gray-700 space-y-1">
-                  <p><span class="font-medium">Type:</span> Mountain Bike</p>
-                  <p><span class="font-medium">Duration:</span> 2 hours</p>
-                  <p>
-                    <span class="font-medium">Return Station:</span> Main Gate
-                  </p>
-                </div>
-              </div>
-
-              <!-- Timer & Action Buttons -->
-              <div
-                class="flex flex-col justify-between items-center md:items-end gap-4"
-              >
-                <!-- Timer -->
-                <div class="text-center md:text-right">
-                  <p class="text-3xl font-extrabold text-gray-900">00:23:41</p>
-                  <p class="text-sm text-gray-500">Time Remaining</p>
-                </div>
-
-                <!-- Buttons -->
-                <div class="flex flex-col gap-2 w-full md:w-40">
-                  <button
-                    class="w-full px-4 py-2 bg-red-300 text-Ltext rounded hover:bg-red-500 transition duration-200"
-                  >
-                    End Rental
-                  </button>
-                  <button
-                    class="w-full px-4 py-2 bg-Lsecondary text-Ltext rounded hover:bg-blue-500 transition duration-200"
-                  >
-                    Extend Time
-                  </button>
-                </div>
+          <!-- Pagination -->
+          <div class="border-t border-gray-200 px-6 py-4">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-600">
+                Showing 1 to 5 of 12 results
+              </span>
+              <div class="flex space-x-2">
+                <button
+                  class="px-3 py-1 rounded bg-Lprimary text-Ltext hover:bg-Lprimary2"
+                >
+                  Previous
+                </button>
+                <button
+                  class="px-3 py-1 rounded bg-Lprimary text-Ltext hover:bg-Lprimary2"
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Google Map Placeholder (Only shown if no active rental) -->
-        <div class="bg-white p-6 rounded-xl shadow-lg">
-          <h3 class="text-xl font-semibold text-gray-700">
-            Bike Rental Locations
-          </h3>
-          <div class="mt-4">
-            <img
-              src="https://placehold.co/800x400?text=Google+Map"
-              alt="Google Map"
-              class="w-full h-auto rounded-lg"
-            />
-          </div>
-        </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer class="bg-Lprimary text-Ltext py-10">
       <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
@@ -504,7 +502,6 @@
         </button>
       </div>
     </div>
-
     <script>
       // Global variables
       const mobileMenuButton = document.getElementById("mobileMenuButton");
@@ -670,6 +667,18 @@
         const chatModal = document.getElementById("chatModal");
         chatModal.classList.toggle("hidden");
       }
+
+      document
+        .getElementById("searchRentals")
+        .addEventListener("input", function () {
+          const query = this.value.toLowerCase();
+          const rows = document.querySelectorAll("tbody tr");
+
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? "" : "none";
+          });
+        });
     </script>
   </body>
 </html>

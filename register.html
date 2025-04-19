@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Register - CSU BikeRent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/global.css" />
+  </head>
+  <body class="bg-Lbg text-Ltext font-outfit">
+    <!-- Navbar -->
+    <nav class="bg-Lprimary shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-bold text-Ltext flex items-center hover:text-gray-200"
+        >
+          <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+        </a>
+        <a
+          href="login.html"
+          class="px-4 py-2 text-Ltext bg-Laccent hover:bg-gray-300 rounded-lg transition duration-200"
+        >
+          Login
+        </a>
+      </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="min-h-screen flex items-center justify-center">
+      <div
+        class="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center gap-8"
+      >
+        <!-- Left Text Content -->
+        <div class="md:w-1/2 text-center md:text-left space-y-4">
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-snug">
+            <i class="fas fa-bicycle text-Lprimary text-5xl mr-2"></i>
+            CSU BikeRent - Register
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700">
+            Create your account to start enjoying bike rentals at CSU.
+          </p>
+        </div>
+
+        <!-- Register Form -->
+        <div class="md:w-1/2">
+          <!-- Back Button -->
+          <div class="mb-4 text-left">
+            <a
+              href="index.html"
+              class="inline-flex items-center text-sm text-gray-600 hover:text-Lprimary font-medium"
+            >
+              <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+          </div>
+
+          <div
+            class="bg-white p-6 md:p-8 rounded-xl shadow-lg w-full max-w-md space-y-4"
+          >
+            <div>
+              <label
+                for="name"
+                class="block text-base md:text-lg font-semibold text-gray-700"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full text-base md:text-lg px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-Lprimary"
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-base md:text-lg font-semibold text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full text-base md:text-lg px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-Lprimary"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label
+                for="password"
+                class="block text-base md:text-lg font-semibold text-gray-700"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="w-full text-base md:text-lg px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-Lprimary"
+                placeholder="Create a password"
+              />
+              <p class="text-sm md:text-base text-gray-500 mt-1">
+                Must be at least 8 characters long and include 1 uppercase
+                letter, 1 number, and 1 special character.
+              </p>
+            </div>
+            <div>
+              <label
+                for="confirm-password"
+                class="block text-base md:text-lg font-semibold text-gray-700"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                class="w-full text-base md:text-lg px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-Lprimary"
+                placeholder="Confirm your password"
+              />
+              <p class="text-sm md:text-base text-gray-500 mt-1">
+                Please re-enter the same password.
+              </p>
+            </div>
+
+            <!-- Register Button with href -->
+            <a
+              href="dashboard.html"
+              class="w-full py-3 text-base md:text-lg bg-Lprimary text-Ltext rounded-full font-medium hover:bg-green-600 transition duration-300 block text-center"
+            >
+              Register
+            </a>
+
+            <p class="text-sm md:text-base text-center text-gray-600">
+              Already have an account?
+              <a
+                href="login.html"
+                class="text-Lprimary hover:underline font-semibold"
+                >Login here</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

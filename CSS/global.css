@@ -1,0 +1,107 @@
+/* Importing Google Fonts */
+body {
+  font-family: "Outfit", sans-serif;
+}
+
+/* Tailwind Colors */
+:root {
+  --color-Ltext: #060f08;
+  --color-Lbg: #f0f9f2;
+  --color-Lprimary: #4abf69;
+  --color-Lprimary2: #4abf6944;
+  --color-Lsecondary: #8adde0;
+  --color-Lsecondary2: #8adde0a8;
+  --color-Ltertiary: #dfea10;
+  --color-Ltertiary2: #dfea107e;
+  --color-Dtext: #f0f9f2;
+  --color-Dbg: #060f08;
+  --color-Dprimary: #40b55f;
+  --color-Dsecondary: #1f7275;
+  --color-Dtertiary: #e4ef15;
+}
+
+/* Light Mode */
+.text-Ltext {
+  color: var(--color-Ltext);
+}
+.text-Lbg {
+  color: var(--color-Lbg);
+}
+.text-Lprimary {
+  color: var(--color-Lprimary);
+}
+.text-Lprimary2 {
+  color: var(--color-Lprimary2);
+}
+.text-Lsecondary {
+  color: var(--color-Lsecondary);
+}
+.text-Lsecondary-2 {
+  color: var(--color-Lsecondary2);
+}
+.text-Laccent {
+  color: var(--color-Ltertiary);
+}
+.text-Laccent2 {
+  color: var(--color-Ltertiary2);
+}
+.bg-Ltext {
+  background-color: var(--color-Ltext);
+}
+.bg-Lbg {
+  background-color: var(--color-Lbg);
+}
+.bg-Lprimary {
+  background-color: var(--color-Lprimary);
+}
+.bg-Lprimary2 {
+  background-color: var(--color-Lprimary2);
+}
+.bg-Lsecondary {
+  background-color: var(--color-Lsecondary);
+}
+.bg-Lsecondary2 {
+  background-color: var(--color-Lsecondary2);
+}
+.bg-Laccent {
+  background-color: var(--color-Ltertiary);
+}
+.bg-Laccent2 {
+  background-color: var(--color-Ltertiary2);
+}
+
+/* Dark Mode */
+.text-Dtext {
+  color: var(--color-Dtext);
+}
+.text-Dbg {
+  color: var(--color-Dbg);
+}
+.text-Dprimary {
+  color: var(--color-Dprimary);
+}
+.text-Dsecondary {
+  color: var(--color-Dsecondary);
+}
+.text-Daccent {
+  color: var(--color-Dtertiary);
+}
+.bg-Dtext {
+  background-color: var(--color-Dtext);
+}
+.bg-Dbg {
+  background-color: var(--color-Dbg);
+}
+.bg-Dprimary {
+  background-color: var(--color-Dprimary);
+}
+.bg-Dsecondary {
+  background-color: var(--color-Dsecondary);
+}
+.bg-Daccent {
+  background-color: var(--color-Dtertiary);
+}
+
+.border-Lprimary {
+  color: var(--color-Lprimary);
+}

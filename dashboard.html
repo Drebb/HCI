@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - CSU BikeRent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/global.css" />
+  </head>
+  <body class="bg-Lbg text-Ltext font-outfit">
+    <!-- Navbar -->
+    <nav class="bg-Lprimary shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo and Brand Name -->
+        <div class="text-xl md:text-2xl font-bold text-Ltext">
+          <a href="index.html" class="flex items-center text-Ltext">
+            <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+          <a href="dashboard.html" class="text-md md:text-lg text-Ltext"
+            >Dashboard</a
+          >
+          <a href="rental.html" class="text-md md:text-lg text-Ltext">Rental</a>
+          <a href="faq.html" class="text-md md:text-lg text-Ltext">FAQ</a>
+        </div>
+
+        <!-- User Account and Notifications -->
+        <div class="flex items-center space-x-6">
+          <!-- Notification Bell -->
+          <button
+            class="text-Dtext hover:text-gray-200 relative"
+            id="notificationBell"
+          >
+            <i class="fas fa-bell text-lg text-Ltext"></i>
+            <!-- Notification Dropdown -->
+            <div
+              class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden notification-dropdown"
+              id="notificationDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <h3 class="font-semibold">Recent Notifications</h3>
+                <ul class="space-y-2">
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">New rental request</p>
+                    <p class="text-gray-600 text-sm">
+                      A user has rented a bike (Mountain Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">Bike returned</p>
+                    <p class="text-gray-600 text-sm">
+                      A user returned the bike (City Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Maintenance reminder
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      The bike #5 (Road Bike) is under maintenance.
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Upcoming rental expiration
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      Your rental (Mountain Bike) expires in 2 hours.
+                    </p>
+                  </li>
+                  <li class="py-2">
+                    <p class="font-medium text-gray-800">Account updated</p>
+                    <p class="text-gray-600 text-sm">
+                      Your email address has been updated successfully.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </button>
+
+          <!-- Account Dropdown -->
+          <div class="relative">
+            <button
+              class="text-Dtext hover:text-gray-200 flex items-center space-x-2"
+              id="accountButton"
+            >
+              <!-- Profile Picture -->
+              <img
+                src="images/Profile.jpg"
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover border border-black-300"
+              />
+              <span class="text-Ltext">Arian</span>
+              <i class="fa-solid fa-caret-down text-Ltext text-sm"></i>
+            </button>
+            <div
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden account-dropdown"
+              id="accountDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <a href="account.html" class="block py-1">Account Settings</a>
+                <a href="#" class="block py-1">Rent History</a>
+                <a href="logout.html" class="block py-1">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="min-h-screen py-8 px-4">
+      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-8">
+        <!-- Personalized Welcome Message -->
+        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-800">
+            Welcome back, Arian!
+          </h2>
+          <p class="text-gray-600 mt-2">
+            Here’s an overview of your bike rentals and activities.
+          </p>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Bikes Available -->
+          <div class="bg-Lprimary p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-Ltext">Bikes Available</h3>
+            <p class="text-3xl font-bold text-gray-900">15</p>
+          </div>
+
+          <!-- Bikes Rented -->
+          <div class="bg-Laccent2 p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-Ltext">Bikes Rented</h3>
+            <p class="text-3xl font-bold text-gray-900">5</p>
+          </div>
+
+          <!-- Bikes in Maintenance -->
+          <div class="bg-red-300 p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold text-Ltext">
+              Bikes in Maintenance
+            </h3>
+            <p class="text-3xl font-bold text-gray-900">2</p>
+          </div>
+        </div>
+
+        <!-- Currently Rented Section -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-700">Currently Rented</h3>
+          <div class="mt-6">
+            <div class="flex flex-col md:flex-row gap-6 md:items-start">
+              <!-- Bike Image -->
+              <div class="flex justify-center md:block">
+                <img
+                  src="https://placehold.co/150x150?text=Bike+Image"
+                  alt="Bike Image"
+                  class="w-full h-auto rounded-lg object-cover"
+                />
+              </div>
+
+              <!-- Bike Info -->
+              <div class="flex-1 space-y-4">
+                <!-- Header Info -->
+                <div>
+                  <p class="text-lg font-semibold text-gray-800">Bike #3</p>
+                  <p class="text-sm text-gray-600">Location: Masawa Hall</p>
+                </div>
+
+                <!-- Details (single-column always) -->
+                <div class="space-y-1 text-sm text-gray-600">
+                  <p>
+                    <span class="font-medium text-gray-700">Type:</span>
+                    Mountain Bike
+                  </p>
+                  <p>
+                    <span class="font-medium text-gray-700">Duration:</span> 2
+                    hours
+                  </p>
+                  <p>
+                    <span class="font-medium text-gray-700"
+                      >Return Station:</span
+                    >
+                    Main Gate
+                  </p>
+                </div>
+
+                <!-- Timer -->
+                <div>
+                  <p class="text-2xl font-bold text-gray-900">00:23:41</p>
+                  <p class="text-sm text-gray-600">Time Remaining</p>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div
+                class="flex flex-col justify-between items-stretch gap-3 md:w-40"
+              >
+                <button
+                  class="px-6 py-2 bg-red-300 text-Ltext rounded-lg hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                >
+                  End Rental
+                </button>
+                <button
+                  class="px-6 py-2 bg-Lsecondary text-Ltext rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Extend Time
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Map Placeholder (Only shown if no active rental) -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-700">
+            Bike Rental Locations
+          </h3>
+          <div class="mt-4">
+            <img
+              src="https://placehold.co/800x400?text=Google+Map"
+              alt="Google Map"
+              class="w-full h-auto rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-Lprimary text-Ltext py-10">
+      <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+        <!-- CSU BikeRent Info Section -->
+        <div class="space-y-4">
+          <h5 class="font-bold">CSU BikeRent</h5>
+          <p>
+            Sustainable campus transportation solution for Caraga State
+            University students and faculty.
+          </p>
+          <div class="flex space-x-4 text-2xl">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Service Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Services</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#how" class="hover:underline">How It Works</a></li>
+            <li><a href="#" class="hover:underline">Pricing</a></li>
+            <li><a href="#features" class="hover:underline">Locations</a></li>
+            <li><a href="#testimonials" class="hover:underline">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Account</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="hover:underline">Login</a></li>
+            <li><a href="#" class="hover:underline">Register</a></li>
+            <li><a href="#" class="hover:underline">Dashboard</a></li>
+            <li><a href="#" class="hover:underline">Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Get in Touch</h6>
+          <ul class="space-y-1 text-sm">
+            <li>
+              <i class="fas fa-map-marker-alt mr-2"></i>Student Center, CSU
+              Campus
+            </li>
+            <li><i class="fas fa-envelope mr-2"></i>info@csubikerent.edu</li>
+            <li><i class="fas fa-phone mr-2"></i>(555) 123-4567</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Copyright -->
+      <div class="mt-10 text-center text-sm opacity-70">
+        &copy; 2025 CSU BikeRent. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Chat Button (Bottom Right) -->
+    <button
+      id="chatButton"
+      class="fixed bottom-6 right-6 p-4 bg-Lprimary text-Ltext rounded-full shadow-lg hover:bg-green-700 focus:outline-none"
+      onclick="toggleChatModal()"
+    >
+      <i class="fas fa-comment-alt"></i>
+    </button>
+
+    <!-- Chat modal -->
+    <div
+      id="chatModal"
+      class="fixed bottom-20 right-6 w-80 bg-white border rounded-lg shadow-lg hidden z-50"
+    >
+      <div
+        class="flex justify-between items-center bg-Lprimary text-Ltext p-3 rounded-t-lg"
+      >
+        <h3 class="text-lg font-semibold">Chat Support</h3>
+        <!-- Close Button -->
+        <button
+          onclick="toggleChatModal()"
+          class="text-Ltext text-2xl font-bold leading-none hover:text-gray-200"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="p-4 h-64 overflow-y-auto space-y-2">
+        <!-- Chat messages -->
+        <div class="text-sm text-gray-600">
+          Hello! How can I help you today?
+        </div>
+      </div>
+      <div class="p-3 border-t flex items-center gap-2">
+        <input
+          type="text"
+          class="flex-1 border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Type your message..."
+        />
+        <button
+          class="bg-Lprimary text-Ltext px-4 py-2 rounded hover:bg-green-700 text-sm font-medium"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Toggle the notification dropdown
+      const bellButton = document.getElementById("notificationBell");
+      const notificationDropdown = document.getElementById(
+        "notificationDropdown"
+      );
+
+      bellButton.addEventListener("click", () => {
+        notificationDropdown.classList.toggle("hidden");
+      });
+
+      // Toggle the account dropdown
+      const accountButton = document.getElementById("accountButton");
+      const accountDropdown = document.getElementById("accountDropdown");
+
+      accountButton.addEventListener("click", () => {
+        accountDropdown.classList.toggle("hidden");
+      });
+
+      // Toggle the chat modal
+      function toggleChatModal() {
+        const chatModal = document.getElementById("chatModal");
+        chatModal.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

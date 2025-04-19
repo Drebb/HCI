@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - CSU BikeRent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/global.css" />
+  </head>
+  <body class="bg-Lbg text-Ltext font-outfit">
+    <!-- Navbar -->
+    <nav class="bg-Lprimary shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo and Brand Name -->
+        <div class="text-xl md:text-2xl font-bold text-Ltext">
+          <a href="index.html" class="flex items-center text-Ltext">
+            <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+          <a href="dashboard.html" class="text-md md:text-lg text-Ltext"
+            >Dashboard</a
+          >
+          <a href="rental.html" class="text-md md:text-lg text-Ltext">Rental</a>
+          <a href="faq.html" class="text-md md:text-lg text-Ltext">FAQ</a>
+        </div>
+
+        <!-- User Account and Notifications -->
+        <div class="flex items-center space-x-6">
+          <!-- Notification Bell -->
+          <button
+            class="text-Dtext hover:text-gray-200 relative"
+            id="notificationBell"
+          >
+            <i class="fas fa-bell text-lg text-Ltext"></i>
+            <!-- Notification Dropdown -->
+            <div
+              class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden notification-dropdown"
+              id="notificationDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <h3 class="font-semibold">Recent Notifications</h3>
+                <ul class="space-y-2">
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">New rental request</p>
+                    <p class="text-gray-600 text-sm">
+                      A user has rented a bike (Mountain Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">Bike returned</p>
+                    <p class="text-gray-600 text-sm">
+                      A user returned the bike (City Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Maintenance reminder
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      The bike #5 (Road Bike) is under maintenance.
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Upcoming rental expiration
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      Your rental (Mountain Bike) expires in 2 hours.
+                    </p>
+                  </li>
+                  <li class="py-2">
+                    <p class="font-medium text-gray-800">Account updated</p>
+                    <p class="text-gray-600 text-sm">
+                      Your email address has been updated successfully.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </button>
+
+          <!-- Account Dropdown -->
+          <div class="relative">
+            <button
+              class="text-Dtext hover:text-gray-200 flex items-center space-x-2"
+              id="accountButton"
+            >
+              <!-- Profile Picture -->
+              <img
+                src="images/Profile.jpg"
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover border border-black-300"
+              />
+              <span class="text-Ltext">Arian</span>
+              <i class="fa-solid fa-caret-down text-Ltext text-sm"></i>
+            </button>
+            <div
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden account-dropdown"
+              id="accountDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <a href="account.html" class="block py-1">Account Settings</a>
+                <a href="#" class="block py-1">Rent History</a>
+                <a href="logout.html" class="block py-1">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <section class="min-h-screen py-8 px-4">
+      <div class="container mx-auto px-6 md:px-12">
+        <!-- FAQ Header -->
+        <div class="bg-Lprimary2 p-6 md:p-8 rounded-xl shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-800">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-gray-600 mt-2">
+            Find answers to common questions about bike rentals and usage.
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mt-6 mb-4">
+          <input
+            type="text"
+            class="w-full p-3 rounded-lg shadow-md border border-gray-300"
+            placeholder="Search FAQs..."
+            id="searchFaq"
+          />
+        </div>
+
+        <!-- Accordion FAQ List -->
+        <div class="space-y-4">
+          <!-- Q&A Items -->
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What are the rental fees
+              for the bikes?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                Rental fees depend on the bike type and the duration of use. For
+                instance:
+              </p>
+              <ul>
+                <li>Mountain bikes: 10php per hour</li>
+                <li>Road bikes: 10php per hour</li>
+                <li>Electric bikes: 30php per hour</li>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What types of bikes are
+              available for rent?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>We offer a variety of bikes for rent:</p>
+              <ul>
+                <li>
+                  <strong>Mountain Bikes:</strong> Perfect for off-road trails
+                  and rough terrain.
+                </li>
+                <li>
+                  <strong>Road Bikes:</strong> Lightweight bikes ideal for
+                  long-distance, paved roads.
+                </li>
+                <li>
+                  <strong>Electric Bikes:</strong> E-bikes with a motor assist
+                  for easier and faster rides.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> Do I need a helmet to
+              rent a bike?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                No, however helmets are provided free of charge. For safety reasons,
+                all renters are encouraged to wear a helmet while riding.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What happens if I damage
+              the bike during the rental?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                If the bike is damaged during your rental, you will be
+                responsible for the repair costs. If damage is severe, we may
+                charge you for the full replacement cost of the bike.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> How do I extend my rental
+              time?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                You can extend your rental time directly through our dashboard. Extensions are subject to
+                availability.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> Is there a late fee if I
+              return the bike late?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                Yes, a late fee of 5php per 30 minutes will apply if the bike is
+                returned after the scheduled time. Please inform us if you
+                anticipate being late.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> Can I reserve a bike in
+              advance?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                No, in order to avoid overbooking, we do not allow advance
+                reservations. Bikes are available on a first-come, first-served.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What if the bike is lost
+              or stolen?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                If the bike is lost or stolen, you will be responsible for the
+                full replacement cost. Please report the incident to us
+                immediately.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What are your hours of
+              operation?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                Our rental service is available from 7:00 AM to 7:00 PM, Monday
+                to Saturday. We are closed on Sundays and public holidays.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> Do I need to bring my CSU ID?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                Yes, show your student ID to the claim station after renting.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> What should I do if I
+              have a problem with the bike during my rental?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                If you encounter any issues, such as a flat tire or mechanical
+                malfunction, please contact customer support immediately for
+                assistance.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> How can I contact
+              customer support?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                You can contact our customer support team via email at
+                support@csubikerent.com or call us at (123) 456-7890.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button
+              class="faq-question w-full text-left p-4 bg-white rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <i class="fas fa-chevron-down mr-2"></i> Are there any
+              restrictions on where I can ride the bike?
+            </button>
+            <div class="faq-answer p-4 bg-gray-50 rounded-lg hidden">
+              <p>
+                Yes, we request that bikes not be ridden on private property or
+                in restricted zones. Please respect local regulations and riding
+                areas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Footer -->
+        <footer class="bg-Lprimary text-Ltext py-10">
+          <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <!-- CSU BikeRent Info Section -->
+            <div class="space-y-4">
+              <h5 class="font-bold">CSU BikeRent</h5>
+              <p>
+                Sustainable campus transportation solution for Caraga State
+                University students and faculty.
+              </p>
+              <div class="flex space-x-4 text-2xl">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+    
+            <!-- Service Links Section -->
+            <div>
+              <h6 class="font-semibold mb-2">Services</h6>
+              <ul class="space-y-1 text-sm">
+                <li><a href="#how" class="hover:underline">How It Works</a></li>
+                <li><a href="#" class="hover:underline">Pricing</a></li>
+                <li><a href="#features" class="hover:underline">Locations</a></li>
+                <li><a href="#testimonials" class="hover:underline">FAQ</a></li>
+              </ul>
+            </div>
+    
+            <!-- Account Links Section -->
+            <div>
+              <h6 class="font-semibold mb-2">Account</h6>
+              <ul class="space-y-1 text-sm">
+                <li><a href="#" class="hover:underline">Login</a></li>
+                <li><a href="#" class="hover:underline">Register</a></li>
+                <li><a href="#" class="hover:underline">Dashboard</a></li>
+                <li><a href="#" class="hover:underline">Profile</a></li>
+              </ul>
+            </div>
+    
+            <!-- Contact Info Section -->
+            <div>
+              <h6 class="font-semibold mb-2">Get in Touch</h6>
+              <ul class="space-y-1 text-sm">
+                <li>
+                  <i class="fas fa-map-marker-alt mr-2"></i>Student Center, CSU
+                  Campus
+                </li>
+                <li><i class="fas fa-envelope mr-2"></i>info@csubikerent.edu</li>
+                <li><i class="fas fa-phone mr-2"></i>(555) 123-4567</li>
+              </ul>
+            </div>
+          </div>
+    
+          <!-- Footer Copyright -->
+          <div class="mt-10 text-center text-sm opacity-70">
+            &copy; 2025 CSU BikeRent. All rights reserved.
+          </div>
+        </footer>
+
+      <!-- Chat Button (Bottom Right) -->
+    <button
+    id="chatButton"
+    class="fixed bottom-6 right-6 p-4 bg-Lprimary text-Ltext rounded-full shadow-lg hover:bg-green-700 focus:outline-none"
+    onclick="toggleChatModal()"
+  >
+    <i class="fas fa-comment-alt"></i>
+  </button>
+
+  <!-- Chat modal -->
+  <div
+    id="chatModal"
+    class="fixed bottom-20 right-6 w-80 bg-white border rounded-lg shadow-lg hidden z-50"
+  >
+    <div
+      class="flex justify-between items-center bg-Lprimary text-Ltext p-3 rounded-t-lg"
+    >
+      <h3 class="text-lg font-semibold">Chat Support</h3>
+      <!-- Close Button -->
+      <button
+        onclick="toggleChatModal()"
+        class="text-Ltext text-2xl font-bold leading-none hover:text-gray-200"
+      >
+        &times;
+      </button>
+    </div>
+    <div class="p-4 h-64 overflow-y-auto space-y-2">
+      <!-- Chat messages -->
+      <div class="text-sm text-gray-600">
+        Hello! How can I help you today?
+      </div>
+    </div>
+    <div class="p-3 border-t flex items-center gap-2">
+      <input
+        type="text"
+        class="flex-1 border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+        placeholder="Type your message..."
+      />
+      <button
+        class="bg-Lprimary text-Ltext px-4 py-2 rounded hover:bg-green-700 text-sm font-medium"
+      >
+        Send
+      </button>
+    </div>
+  </div>
+
+    <script>
+
+       // Toggle the notification dropdown
+       const bellButton = document.getElementById("notificationBell");
+      const notificationDropdown = document.getElementById(
+        "notificationDropdown"
+      );
+
+      bellButton.addEventListener("click", () => {
+        notificationDropdown.classList.toggle("hidden");
+      });
+
+
+        // Toggle the account dropdown
+        const accountButton = document.getElementById("accountButton");
+      const accountDropdown = document.getElementById("accountDropdown");
+
+      accountButton.addEventListener("click", () => {
+        accountDropdown.classList.toggle("hidden");
+      });
+
+
+      // Toggle the chat modal
+      function toggleChatModal() {
+        const chatModal = document.getElementById("chatModal");
+        chatModal.classList.toggle("hidden");
+      }
+        // Toggle FAQ answer visibility
+        document.querySelectorAll(".faq-question").forEach((button) => {
+          button.addEventListener("click", () => {
+            const answer = button.nextElementSibling;
+            answer.classList.toggle("hidden");
+          });
+        });
+      
+        // Implementing search functionality
+        document.getElementById("searchFaq").addEventListener("input", function () {
+          const query = this.value.toLowerCase();
+          const faqItems = document.querySelectorAll(".faq-item");
+      
+          faqItems.forEach((item) => {
+            const question = item.querySelector(".faq-question").textContent.toLowerCase();
+            if (question.includes(query)) {
+              item.classList.remove("hidden");
+            } else {
+              item.classList.add("hidden");
+            }
+          });
+        });
+      </script>
+      
+  </body>
+</html>

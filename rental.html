@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rental - CSU BikeRent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/global.css" />
+  </head>
+  <body class="bg-Lbg text-gray-800 font-outfit">
+    <!-- Navbar -->
+    <nav class="bg-Lprimary shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo and Brand Name -->
+        <div class="text-xl md:text-2xl font-bold text-Ltext">
+          <a href="index.html" class="flex items-center text-Ltext">
+            <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+          <a href="dashboard.html" class="text-md md:text-lg text-Ltext"
+            >Dashboard</a
+          >
+          <a href="rental.html" class="text-md md:text-lg text-Ltext">Rental</a>
+          <a href="faq.html" class="text-md md:text-lg text-Ltext">FAQ</a>
+        </div>
+
+        <!-- User Account and Notifications -->
+        <div class="flex items-center space-x-6">
+          <!-- Notification Bell -->
+          <button
+            class="text-Dtext hover:text-gray-200 relative"
+            id="notificationBell"
+          >
+            <i class="fas fa-bell text-lg text-Ltext"></i>
+            <!-- Notification Dropdown -->
+            <div
+              class="absolute right-0 mt-2 w-64 bg-white border border-gray-300 rounded-lg shadow-lg hidden notification-dropdown"
+              id="notificationDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <h3 class="font-semibold">Recent Notifications</h3>
+                <ul class="space-y-2">
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">New rental request</p>
+                    <p class="text-gray-600 text-sm">
+                      A user has rented a bike (Mountain Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">Bike returned</p>
+                    <p class="text-gray-600 text-sm">
+                      A user returned the bike (City Bike).
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Maintenance reminder
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      The bike #5 (Road Bike) is under maintenance.
+                    </p>
+                  </li>
+                  <li class="border-b border-gray-200 py-2">
+                    <p class="font-medium text-gray-800">
+                      Upcoming rental expiration
+                    </p>
+                    <p class="text-gray-600 text-sm">
+                      Your rental (Mountain Bike) expires in 2 hours.
+                    </p>
+                  </li>
+                  <li class="py-2">
+                    <p class="font-medium text-gray-800">Account updated</p>
+                    <p class="text-gray-600 text-sm">
+                      Your email address has been updated successfully.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </button>
+
+          <!-- Account Dropdown -->
+          <div class="relative">
+            <button
+              class="text-Dtext hover:text-gray-200 flex items-center space-x-2"
+              id="accountButton"
+            >
+              <!-- Profile Picture -->
+              <img
+                src="images/Profile.jpg"
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover border border-black-300"
+              />
+              <span class="text-Ltext">Arian</span>
+              <i class="fa-solid fa-caret-down text-Ltext text-sm"></i>
+            </button>
+            <div
+              class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg hidden account-dropdown"
+              id="accountDropdown"
+            >
+              <div class="py-2 px-4 text-sm text-gray-700">
+                <a href="account.html" class="block py-1">Account Settings</a>
+                <a href="#" class="block py-1">Rent History</a>
+                <a href="logout.html" class="block py-1">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Rental Page Section -->
+    <section class="min-h-screen py-8 px-4">
+      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-8">
+        <!-- Overview Message -->
+        <div class="bg-Lprimary2 p-6 md:p-8 rounded-2xl shadow-lg">
+          <h2
+            class="text-3xl font-bold text-Ltext mb-2 flex items-center gap-2"
+          >
+            <i class="fas fa-bicycle text-Ltext"></i> Rent a Bike Now!
+          </h2>
+          <p class="text-Ltext text-base md:text-lg leading-relaxed">
+            Need a quick ride around campus? We’ve got you covered! Choose from
+            a variety of bikes available at key locations. Just click on a rent
+            button to start your rental.
+          </p>
+          <p class="text-Ltext text-sm mt-3">
+            Got questions? Check out our
+            <a href="faq.html" class="text-Lprimary hover:underline font-medium"
+              >FAQ page</a
+            >
+            for more details.
+          </p>
+        </div>
+
+        <!-- Collapsible Filters Component -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <!-- Toggle Button -->
+          <button
+            id="filterToggleBtn"
+            aria-expanded="false"
+            class="w-full flex items-center justify-between px-4 py-2 bg-Lprimary text-white rounded-md hover:bg-green-700 transition-colors focus:outline-none"
+          >
+            <span class="flex items-center space-x-2 text-Ltext">
+              <i class="fas fa-filter"></i>
+              <span>Advanced Filters</span>
+            </span>
+            <i
+              id="filterChevron"
+              class="fas fa-chevron-down transition-transform text-Ltext"
+            ></i>
+          </button>
+
+          <!-- Collapsible Container -->
+          <div
+            id="filterPanel"
+            class="overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out"
+          >
+            <div class="mt-4 space-y-6">
+              <!-- Category -->
+              <div>
+                <label class="block font-semibold mb-2">Category</label>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    data-filter="category"
+                    data-value="all"
+                    class="filter-pill active"
+                  >
+                    All
+                  </button>
+                  <button
+                    data-filter="category"
+                    data-value="Mountain"
+                    class="filter-pill"
+                  >
+                    Mountain
+                  </button>
+                  <button
+                    data-filter="category"
+                    data-value="Road"
+                    class="filter-pill"
+                  >
+                    Road
+                  </button>
+                  <button
+                    data-filter="category"
+                    data-value="EBike"
+                    class="filter-pill"
+                  >
+                    E‑Bike
+                  </button>
+                </div>
+              </div>
+              <!-- Area -->
+              <div>
+                <label class="block font-semibold mb-2">Area</label>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    data-filter="area"
+                    data-value="all"
+                    class="filter-pill active"
+                  >
+                    All
+                  </button>
+                  <button
+                    data-filter="area"
+                    data-value="Main Gate"
+                    class="filter-pill"
+                  >
+                    Main Gate
+                  </button>
+                  <button
+                    data-filter="area"
+                    data-value="Green Gate"
+                    class="filter-pill"
+                  >
+                    Green Gate
+                  </button>
+                </div>
+              </div>
+              <!-- Pax -->
+              <div>
+                <label class="block font-semibold mb-2">Pax</label>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    data-filter="pax"
+                    data-value="all"
+                    class="filter-pill active"
+                  >
+                    All
+                  </button>
+                  <button data-filter="pax" data-value="1" class="filter-pill">
+                    1
+                  </button>
+                  <button data-filter="pax" data-value="2" class="filter-pill">
+                    2
+                  </button>
+                  <button data-filter="pax" data-value="3+" class="filter-pill">
+                    3+
+                  </button>
+                </div>
+              </div>
+              <!-- Price -->
+              <div>
+                <label class="block font-semibold mb-2">Price Range (₱)</label>
+                <div class="flex items-center gap-4">
+                  <input
+                    id="priceMin"
+                    type="number"
+                    placeholder="Min"
+                    class="w-24 px-3 py-1 border rounded-md"
+                  />
+                  <span> - </span>
+                  <input
+                    id="priceMax"
+                    type="number"
+                    placeholder="Max"
+                    class="w-24 px-3 py-1 border rounded-md"
+                  />
+                </div>
+              </div>
+              <!-- Actions -->
+              <div class="flex justify-end gap-2">
+                <button
+                  id="clearFilters"
+                  class="bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300 transition"
+                >
+                  Clear
+                </button>
+                <button
+                  id="applyFilters"
+                  class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike List Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Improved Bike Card with Price -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 flex flex-col group bike-card"
+            data-category="Mountain"
+            data-area="Main Gate"
+            data-pax="1"
+            data-price="10"
+          >
+            <!-- Image + Status Badge -->
+            <div class="relative">
+              <img
+                src="images/Bike.jpg"
+                alt="Mountain Bike"
+                class="w-full h-48 object-cover rounded-lg"
+              />
+              <!-- Availability Badge -->
+              <span
+                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+              >
+                Available
+              </span>
+              <!-- Bike Type Icon -->
+              <span
+                class="absolute top-4 right-4 bg-white bg-opacity-75 text-gray-800 text-lg p-2 rounded-full shadow"
+                title="Mountain Bike"
+              >
+                <i class="fas fa-mountain"></i>
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-4 flex-1 flex flex-col">
+              <h3
+                class="text-2xl font-bold text-gray-800 group-hover:text-Lprimary transition"
+              >
+                Mountain Bike
+              </h3>
+
+              <!-- Price -->
+              <div
+                class="mt-1 flex items-center text-lg font-semibold text-gray-800"
+              >
+                <i class="fas fa-money-bill-wave mr-2 text-Lprimary"></i>
+                ₱10 / hr
+              </div>
+
+              <div class="mt-2 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                Main Gate
+              </div>
+              <div class="mt-1 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-info-circle mr-1"></i>
+                Perfect for campus paths
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="mt-4 grid grid-cols-2 gap-2 text-gray-600 text-sm">
+                <div class="flex items-center">
+                  <i class="fas fa-users mr-1"></i>
+                  Pax: 1 Person
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-shield-alt mr-1"></i>
+                  Basket: Yes
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-tools mr-1"></i>
+                  Maint.: OK
+                </div>
+              </div>
+
+              <!-- Rent Button -->
+              <div class="mt-auto pt-4">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                >
+                  Rent Now
+                  <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- E‑Bike Card -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 flex flex-col group bike-card"
+            data-category="EBike"
+            data-area="Green Gate"
+            data-pax="2"
+            data-price="30"
+          >
+            <!-- Image + Status Badge -->
+            <div class="relative">
+              <img
+                src="images/Bike.jpg"
+                alt="E‑Bike"
+                class="w-full h-48 object-cover rounded-lg"
+              />
+              <!-- Availability Badge -->
+              <span
+                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+              >
+                Available
+              </span>
+              <!-- Bike Type Icon -->
+              <span
+                class="absolute top-4 right-4 bg-white bg-opacity-75 text-gray-800 text-lg p-2 rounded-full shadow"
+                title="E‑Bike"
+              >
+                <i class="fas fa-bolt"></i>
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-4 flex-1 flex flex-col">
+              <h3
+                class="text-2xl font-bold text-gray-800 group-hover:text-Lprimary transition"
+              >
+                E‑Bike
+              </h3>
+
+              <!-- Price -->
+              <div
+                class="mt-1 flex items-center text-lg font-semibold text-gray-800"
+              >
+                <i class="fas fa-money-bill-wave mr-2 text-Lprimary"></i>
+                ₱30 / hr
+              </div>
+
+              <div class="mt-2 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                Green Gate
+              </div>
+              <div class="mt-1 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-info-circle mr-1"></i>
+                Motor‑assist included
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="mt-4 grid grid-cols-2 gap-2 text-gray-600 text-sm">
+                <div class="flex items-center">
+                  <i class="fas fa-users mr-1"></i>
+                  Pax: 2 Person
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-shield-alt mr-1"></i>
+                  Basket: No
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-tools mr-1"></i>
+                  Maint.: OK
+                </div>
+              </div>
+
+              <!-- Rent Button -->
+              <div class="mt-auto pt-4">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                >
+                  Rent Now
+                  <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Road Bike Card -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 flex flex-col group bike-card"
+            data-category="Road"
+            data-area="Main Gate"
+            data-pax="1"
+            data-price="10"
+          >
+            <!-- Image + Status Badge -->
+            <div class="relative">
+              <img
+                src="images/Bike.jpg"
+                alt="Road Bike"
+                class="w-full h-48 object-cover rounded-lg"
+              />
+              <!-- Availability Badge -->
+              <span
+                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+              >
+                Available
+              </span>
+              <!-- Bike Type Icon -->
+              <span
+                class="absolute top-4 right-4 bg-white bg-opacity-75 text-gray-800 text-lg p-2 rounded-full shadow"
+                title="Road Bike"
+              >
+                <i class="fas fa-road"></i>
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-4 flex-1 flex flex-col">
+              <h3
+                class="text-2xl font-bold text-gray-800 group-hover:text-Lprimary transition"
+              >
+                Road Bike
+              </h3>
+
+              <!-- Price -->
+              <div
+                class="mt-1 flex items-center text-lg font-semibold text-gray-800"
+              >
+                <i class="fas fa-money-bill-wave mr-2 text-Lprimary"></i>
+                ₱10 / hr
+              </div>
+
+              <div class="mt-2 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                Main Gate
+              </div>
+              <div class="mt-1 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-info-circle mr-1"></i>
+                Lightweight frame
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="mt-4 grid grid-cols-2 gap-2 text-gray-600 text-sm">
+                <div class="flex items-center">
+                  <i class="fas fa-users mr-1"></i>
+                  Pax: 1 Person
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-shield-alt mr-1"></i>
+                  Basket: No
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-tools mr-1"></i>
+                  Maint.: OK
+                </div>
+              </div>
+
+              <!-- Rent Button -->
+              <div class="mt-auto pt-4">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                >
+                  Rent Now
+                  <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rented Bike Card Variant -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-6 flex flex-col group opacity-60 bike-card"
+            data-category="Mountain"
+            data-area="Main Gate"
+            data-pax="1"
+            data-price="10"
+          >
+            <!-- Image + Status Badge -->
+            <div class="relative">
+              <img
+                src="images/Bike.jpg"
+                alt="Mountain Bike"
+                class="w-full h-48 object-cover rounded-lg"
+              />
+              <!-- Rented Badge -->
+              <span
+                class="absolute top-4 left-4 bg-red-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+              >
+                Rented
+              </span>
+              <!-- Bike Type Icon -->
+              <span
+                class="absolute top-4 right-4 bg-white bg-opacity-75 text-gray-800 text-lg p-2 rounded-full shadow"
+                title="Mountain Bike"
+              >
+                <i class="fas fa-mountain"></i>
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-4 flex-1 flex flex-col">
+              <h3
+                class="text-2xl font-bold text-gray-800 group-hover:text-Lprimary transition"
+              >
+                Mountain Bike
+              </h3>
+
+              <!-- Price -->
+              <div
+                class="mt-1 flex items-center text-lg font-semibold text-gray-800"
+              >
+                <i class="fas fa-money-bill-wave mr-2 text-Lprimary"></i>
+                ₱10 / hr
+              </div>
+
+              <div class="mt-2 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                Main Gate
+              </div>
+              <div class="mt-1 flex items-center text-gray-600 text-sm">
+                <i class="fas fa-info-circle mr-1"></i>
+                Perfect for campus paths
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="mt-4 grid grid-cols-2 gap-2 text-gray-600 text-sm">
+                <div class="flex items-center">
+                  <i class="fas fa-users mr-1"></i>
+                  Pax: 1 Person
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-shield-alt mr-1"></i>
+                  Basket: Yes
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-tools mr-1"></i>
+                  Maint.: OK
+                </div>
+              </div>
+
+              <!-- Disabled Button -->
+              <div class="mt-auto pt-4">
+                <button
+                  class="inline-flex items-center justify-center bg-gray-400 text-white font-medium rounded-full px-5 py-3 cursor-not-allowed"
+                  disabled
+                >
+                  Currently Rented
+                  <i class="fas fa-lock ml-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-Lprimary text-Ltext py-10">
+      <div class="container mx-auto px-6 grid md:grid-cols-4 gap-10">
+        <!-- CSU BikeRent Info Section -->
+        <div class="space-y-4">
+          <h5 class="font-bold">CSU BikeRent</h5>
+          <p>
+            Sustainable campus transportation solution for Caraga State
+            University students and faculty.
+          </p>
+          <div class="flex space-x-4 text-2xl">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Service Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Services</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#how" class="hover:underline">How It Works</a></li>
+            <li><a href="#" class="hover:underline">Pricing</a></li>
+            <li><a href="#features" class="hover:underline">Locations</a></li>
+            <li><a href="#testimonials" class="hover:underline">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Account</h6>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="hover:underline">Login</a></li>
+            <li><a href="#" class="hover:underline">Register</a></li>
+            <li><a href="#" class="hover:underline">Dashboard</a></li>
+            <li><a href="#" class="hover:underline">Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div>
+          <h6 class="font-semibold mb-2">Get in Touch</h6>
+          <ul class="space-y-1 text-sm">
+            <li>
+              <i class="fas fa-map-marker-alt mr-2"></i>Student Center, CSU
+              Campus
+            </li>
+            <li><i class="fas fa-envelope mr-2"></i>info@csubikerent.edu</li>
+            <li><i class="fas fa-phone mr-2"></i>(555) 123-4567</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Copyright -->
+      <div class="mt-10 text-center text-sm opacity-70">
+        &copy; 2025 CSU BikeRent. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Chat Button (Bottom Right) -->
+    <button
+      id="chatButton"
+      class="fixed bottom-6 right-6 p-4 bg-Lprimary text-Ltext rounded-full shadow-lg hover:bg-green-700 focus:outline-none"
+      onclick="toggleChatModal()"
+    >
+      <i class="fas fa-comment-alt"></i>
+    </button>
+
+    <!-- Chat modal -->
+    <div
+      id="chatModal"
+      class="fixed bottom-20 right-6 w-80 bg-white border rounded-lg shadow-lg hidden z-50"
+    >
+      <div
+        class="flex justify-between items-center bg-Lprimary text-Ltext p-3 rounded-t-lg"
+      >
+        <h3 class="text-lg font-semibold">Chat Support</h3>
+        <!-- Close Button -->
+        <button
+          onclick="toggleChatModal()"
+          class="text-Ltext text-2xl font-bold leading-none hover:text-gray-200"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="p-4 h-64 overflow-y-auto space-y-2">
+        <!-- Chat messages -->
+        <div class="text-sm text-gray-600">
+          Hello! How can I help you today?
+        </div>
+      </div>
+      <div class="p-3 border-t flex items-center gap-2">
+        <input
+          type="text"
+          class="flex-1 border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Type your message..."
+        />
+        <button
+          class="bg-Lprimary text-Ltext px-4 py-2 rounded hover:bg-green-700 text-sm font-medium"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Toggle the notification dropdown
+      const bellButton = document.getElementById("notificationBell");
+      const notificationDropdown = document.getElementById(
+        "notificationDropdown"
+      );
+
+      bellButton.addEventListener("click", () => {
+        notificationDropdown.classList.toggle("hidden");
+      });
+      // Toggle the chat modal
+      function toggleChatModal() {
+        const chatModal = document.getElementById("chatModal");
+        chatModal.classList.toggle("hidden");
+      }
+
+      // Toggle account dropdown
+      document
+        .getElementById("accountButton")
+        .addEventListener("click", function () {
+          const dropdown = document.getElementById("accountDropdown");
+          dropdown.classList.toggle("hidden");
+        });
+
+      // 1) STYLE PILL BUTTONS
+      const pillClasses = [
+        "px-4",
+        "py-2",
+        "text-sm",
+        "font-medium",
+        "rounded-full",
+        "border",
+        "border-green-600",
+        "text-green-600",
+        "hover:bg-green-600",
+        "hover:text-white",
+        "transition",
+      ];
+      document
+        .querySelectorAll("[data-filter]")
+        .forEach((p) => p.classList.add(...pillClasses));
+
+      const cards = document.querySelectorAll(".bike-card");
+
+      // 2) TOGGLE COLLAPSE
+      const toggleBtn = document.getElementById("filterToggleBtn");
+      const panel = document.getElementById("filterPanel");
+      const chevron = document.getElementById("filterChevron");
+
+      toggleBtn.addEventListener("click", () => {
+        const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", !expanded);
+        if (expanded) {
+          panel.style.maxHeight = "0";
+          chevron.classList.remove("rotate-180");
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          chevron.classList.add("rotate-180");
+        }
+      });
+
+      // 3) PILL STATE MANAGEMENT
+      document.querySelectorAll("[data-filter]").forEach((pill) => {
+        pill.addEventListener("click", () => {
+          const type = pill.dataset.filter;
+          document
+            .querySelectorAll(`button[data-filter="${type}"]`)
+            .forEach((b) => {
+              b.classList.remove("bg-green-600", "text-white");
+              b.classList.add("text-green-600");
+            });
+          pill.classList.remove("text-green-600");
+          pill.classList.add("bg-green-600", "text-white");
+        });
+      });
+
+      // 4) APPLY & CLEAR
+      document.getElementById("applyFilters").addEventListener("click", () => {
+        const cat =
+          document.querySelector('button[data-filter="category"].bg-green-600')
+            ?.dataset.value || "all";
+        const area =
+          document.querySelector('button[data-filter="area"].bg-green-600')
+            ?.dataset.value || "all";
+        const pax =
+          document.querySelector('button[data-filter="pax"].bg-green-600')
+            ?.dataset.value || "all";
+
+        // Get min/max price values from inputs
+        const min = parseFloat(document.getElementById("priceMin").value) || 0;
+        const max =
+          parseFloat(document.getElementById("priceMax").value) || Infinity;
+
+        cards.forEach((c) => {
+          const catMatch = cat === "all" || c.dataset.category === cat;
+          const areaMatch = area === "all" || c.dataset.area === area;
+
+          const paxData = parseInt(c.dataset.pax, 10);
+          const paxMatch =
+            pax === "all" ||
+            (pax === "1" && paxData === 1) ||
+            (pax === "2" && paxData === 2) ||
+            (pax === "3+" && paxData >= 3);
+
+          const price = parseFloat(c.dataset.price);
+          const priceMatch = price >= min && price <= max;
+
+          c.classList.toggle(
+            "hidden",
+            !(catMatch && areaMatch && paxMatch && priceMatch)
+          );
+        });
+      });
+
+      document.getElementById("clearFilters").addEventListener("click", () => {
+        ["category", "area", "pax"].forEach((type) => {
+          document
+            .querySelectorAll(`button[data-filter="${type}"]`)
+            .forEach((b) => {
+              b.classList.remove("bg-green-600", "text-white");
+              b.classList.add("text-green-600");
+            });
+          const allBtn = document.querySelector(
+            `button[data-filter="${type}"][data-value="all"]`
+          );
+          if (allBtn) {
+            allBtn.classList.remove("text-green-600");
+            allBtn.classList.add("bg-green-600", "text-white");
+          }
+        });
+
+        // Clear price fields
+        document.getElementById("priceMin").value = "";
+        document.getElementById("priceMax").value = "";
+
+        // Show all cards again
+        cards.forEach((c) => c.classList.remove("hidden"));
+      });
+    </script>
+  </body>
+</html>

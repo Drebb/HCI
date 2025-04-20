@@ -9,15 +9,18 @@ body {
   --color-Lbg: #f0f9f2;
   --color-Lprimary: #4abf69;
   --color-Lprimary2: #4abf6944;
-  --color-Lsecondary: #8adde0;
-  --color-Lsecondary2: #8adde0a8;
+  --color-Lsecondary: rgb(138, 221, 224);
+  --color-Lsecondary2: rgba(138, 221, 224, 0.659);
   --color-Ltertiary: #dfea10;
-  --color-Ltertiary2: #dfea107e;
+  --color-Ltertiary2: rgba(223, 234, 16, 0.494);
   --color-Dtext: #f0f9f2;
-  --color-Dbg: #060f08;
-  --color-Dprimary: #40b55f;
-  --color-Dsecondary: #1f7275;
+  --color-Dbg: #060f08cc;
+  --color-Dprimary: #40b55fcb;
+  --color-Dprimary2: #40b55f74;
+  --color-Dsecondary: #2aa8ac;
+  --color-Dsecondary2: #1f7275a8;
   --color-Dtertiary: #e4ef15;
+  --color-Dtertiary2: #c0c642;
 }
 
 /* Light Mode */
@@ -80,11 +83,21 @@ body {
 .text-Dprimary {
   color: var(--color-Dprimary);
 }
+.text-Dprimary2 {
+  color: var(--color-Dprimary2);
+}
+
 .text-Dsecondary {
   color: var(--color-Dsecondary);
 }
+.text-Dsecondary-2 {
+  color: var(--color-Dsecondary2);
+}
 .text-Daccent {
   color: var(--color-Dtertiary);
+}
+.text-Daccent2 {
+  color: var(--color-Dtertiary2);
 }
 .bg-Dtext {
   background-color: var(--color-Dtext);
@@ -95,9 +108,18 @@ body {
 .bg-Dprimary {
   background-color: var(--color-Dprimary);
 }
+.bg-Dprimary2 {
+  background-color: var(--color-Dprimary2);
+}
 .bg-Dsecondary {
   background-color: var(--color-Dsecondary);
 }
+.bg-Dsecondary2 {
+  background-color: var(--color-Dsecondary2);
+}
 .bg-Daccent {
   background-color: var(--color-Dtertiary);
+}
+.bg-Daccent2 {
+  background-color: var(--color-Dtertiary2);
 }

@@ -782,6 +782,25 @@
             </div>
           </div>
         </div>
+
+        <div
+          id="noResultsMessage"
+          class="hidden bg-Lprimary2 p-8 rounded-2xl shadow-lg text-center"
+        >
+          <i class="fas fa-bicycle-slash text-4xl text-gray-600 mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">
+            No Bikes Match Your Filters
+          </h3>
+          <p class="text-gray-600">
+            Try adjusting your search criteria or
+            <button
+              id="resetFiltersBtn"
+              class="text-Lprimary hover:underline font-medium"
+            >
+              reset all filters
+            </button>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -1252,8 +1271,24 @@
             !(catMatch && areaMatch && paxMatch && priceMatch)
           );
         });
+        const visibleCards = document.querySelectorAll(
+          ".bike-card:not(.hidden)"
+        );
+        const noResults = document.getElementById("noResultsMessage");
+
+        if (visibleCards.length === 0) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+        }
       });
 
+      // Add reset filters functionality
+      document
+        .getElementById("resetFiltersBtn")
+        .addEventListener("click", () => {
+          document.getElementById("clearFilters").click();
+        });
       document.getElementById("clearFilters").addEventListener("click", () => {
         ["category", "area", "pax"].forEach((type) => {
           document
@@ -1274,9 +1309,40 @@
         // Clear price fields
         document.getElementById("priceMin").value = "";
         document.getElementById("priceMax").value = "";
+        document.getElementById("noResultsMessage").classList.add("hidden");
 
         // Show all cards again
         cards.forEach((c) => c.classList.remove("hidden"));
+      });
+
+      let scrollDirection = 0; // -1 for up, 1 for down
+      let scrollSpeed = 4; // pixels per frame, adjust to taste
+      let scrolling = false;
+
+      function smoothContinuousScroll() {
+        if (!scrolling || scrollDirection === 0) return;
+        window.scrollBy(0, scrollDirection * scrollSpeed);
+        requestAnimationFrame(smoothContinuousScroll);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (scrolling) return;
+
+        if (e.key === "ArrowDown") {
+          scrollDirection = 1;
+          scrolling = true;
+          requestAnimationFrame(smoothContinuousScroll);
+        } else if (e.key === "ArrowUp") {
+          scrollDirection = -1;
+          scrolling = true;
+          requestAnimationFrame(smoothContinuousScroll);
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          scrolling = false;
+          scrollDirection = 0;
+        }
       });
     </script>
     <style>

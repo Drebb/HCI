@@ -696,6 +696,27 @@
 
       // Refresh button
       document.querySelector("button").addEventListener("click", updateTimers);
+
+      document.addEventListener("keydown", (e) => {
+        if (scrolling) return;
+
+        if (e.key === "ArrowDown") {
+          scrollDirection = 1;
+          scrolling = true;
+          requestAnimationFrame(smoothContinuousScroll);
+        } else if (e.key === "ArrowUp") {
+          scrollDirection = -1;
+          scrolling = true;
+          requestAnimationFrame(smoothContinuousScroll);
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          scrolling = false;
+          scrollDirection = 0;
+        }
+      });
     </script>
   </body>
 </html>

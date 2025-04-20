@@ -33,7 +33,8 @@
             href="index.html"
             class="flex items-center text-Ltext text-xl md:text-2xl font-bold"
           >
-            <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+            <img src="images/Logo.png" alt="Logo" class="w-8 h-8 mr-2" />
+            BikeRent
           </a>
         </div>
 
@@ -311,11 +312,16 @@
               <!-- Bike Info -->
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-4">
-                  <img
-                    src="images/MountBike.jpg"
-                    alt="Mountain Bike"
-                    class="w-16 h-16 object-cover rounded-lg"
-                  />
+                  <!-- Fixed-size Image Container -->
+                  <div
+                    class="w-24 h-24 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden flex-shrink-0"
+                  >
+                    <img
+                      src="images/MountBike.jpg"
+                      alt="Mountain Bike"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
                   <div>
                     <h3 class="text-xl font-bold">Mountain Bike</h3>
                     <p class="text-sm text-gray-600">Main Gate Station</p>
@@ -334,31 +340,55 @@
                   </p>
                 </div>
               </div>
+            </div>
 
-              <!-- Timer Circle -->
-              <div class="relative w-20 h-20">
-                <svg class="transform -rotate-90 w-20 h-20">
-                  <circle
-                    cx="40"
-                    cy="40"
-                    r="35"
-                    class="text-gray-200"
-                    stroke-width="6"
-                    fill="transparent"
-                  />
-                  <circle
-                    cx="40"
-                    cy="40"
-                    r="35"
-                    class="text-Lprimary"
-                    stroke-width="6"
-                    fill="transparent"
-                    stroke-dasharray="219.91"
-                    stroke-dashoffset="65.97"
-                  />
-                </svg>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <span class="text-lg font-bold" data-timer>45:30</span>
+            <!-- Time Progress -->
+            <div class="mt-4">
+              <div class="h-2 bg-gray-200 rounded-full">
+                <div
+                  class="h-2 bg-Lprimary rounded-full"
+                  style="width: 75%"
+                ></div>
+              </div>
+              <div class="flex justify-between text-sm mt-1">
+                <span>Start: 9:00 AM</span>
+                <span>End: 11:30 AM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2nd Timer Card -->
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <div class="flex items-start justify-between">
+              <!-- Bike Info -->
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <!-- Fixed-size Image Container -->
+                  <div
+                    class="w-24 h-24 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden flex-shrink-0"
+                  >
+                    <img
+                      src="images/Ebike.avif"
+                      alt="E-Bike"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold">E-Bike</h3>
+                    <p class="text-sm text-gray-600">Green Gate Station</p>
+                  </div>
+                </div>
+
+                <!-- Renter Info -->
+                <div class="mb-4">
+                  <p class="text-sm">
+                    <i class="fas fa-user mr-2 text-Lprimary"></i>
+                    Rented by: Student
+                  </p>
+                  <p class="text-sm">
+                    <i class="fas fa-clock mr-2 text-Lprimary"></i>
+                    Return Time: <span class="font-medium">3:30 PM</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -367,13 +397,13 @@
             <div class="mt-4">
               <div class="h-2 bg-gray-200 rounded-full">
                 <div
-                  class="h-2 bg-Lprimary rounded-full w-3/4"
+                  class="h-2 bg-Lprimary rounded-full"
                   style="width: 75%"
                 ></div>
               </div>
               <div class="flex justify-between text-sm mt-1">
-                <span>Start: 9:00 AM</span>
-                <span>End: 11:30 AM</span>
+                <span>Start: 8:00 AM</span>
+                <span>End: 3:30 PM</span>
               </div>
             </div>
           </div>
@@ -663,42 +693,6 @@
         const chatModal = document.getElementById("chatModal");
         chatModal.classList.toggle("hidden");
       }
-      // Timer Update Logic
-      function updateTimers() {
-        document.querySelectorAll("[data-timer]").forEach((timer) => {
-          // Example end time (replace with actual return time from data)
-          const endTime = new Date();
-          endTime.setHours(endTime.getHours() + 1);
-          endTime.setMinutes(endTime.getMinutes() + 30);
-
-          const now = new Date();
-          const diff = endTime - now;
-
-          if (diff > 0) {
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            timer.textContent = `${minutes
-              .toString()
-              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-
-            // Update progress circle
-            const circle = timer
-              .closest(".relative")
-              .querySelector("circle:last-child");
-            const totalTime = endTime - new Date(timer.dataset.startTime);
-            const elapsed = now - new Date(timer.dataset.startTime);
-            const percentage = (elapsed / totalTime) * 219.91;
-            circle.style.strokeDashoffset = 219.91 - percentage;
-          } else {
-            timer.textContent = "00:00";
-            timer.closest(".bg-white").classList.add("opacity-50");
-          }
-        });
-      }
-
-      // Update timers every second
-      setInterval(updateTimers, 1000);
-      updateTimers(); // Initial update
 
       // Refresh button
       document.querySelector("button").addEventListener("click", updateTimers);

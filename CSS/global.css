@@ -101,7 +101,3 @@ body {
 .bg-Daccent {
   background-color: var(--color-Dtertiary);
 }
-
-.border-Lprimary {
-  color: var(--color-Lprimary);
-}

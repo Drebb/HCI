@@ -33,7 +33,8 @@
             href="index.html"
             class="flex items-center text-Ltext text-xl md:text-2xl font-bold"
           >
-            <i class="fas fa-bicycle mr-2"></i> CSU BikeRent
+            <img src="images/Logo.png" alt="Logo" class="w-8 h-8 mr-2" />
+            BikeRent
           </a>
         </div>
 
@@ -478,7 +479,7 @@
               />
               <!-- Availability Badge -->
               <span
-                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+                class="absolute top-4 left-4 bg-green-600 text-Laccent text-xs font-semibold uppercase px-2 py-1 rounded"
               >
                 Available
               </span>
@@ -530,13 +531,13 @@
 
               <!-- Rent Button -->
               <div class="mt-auto pt-4">
-                <a
-                  href="#"
-                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                <button
+                  onclick="showPaymentMethodModal()"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition w-full"
                 >
                   Rent Now
                   <i class="fas fa-chevron-right ml-2"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -558,7 +559,7 @@
               />
               <!-- Availability Badge -->
               <span
-                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+                class="absolute top-4 left-4 bg-green-600 text-Laccent text-xs font-semibold uppercase px-2 py-1 rounded"
               >
                 Available
               </span>
@@ -610,13 +611,13 @@
 
               <!-- Rent Button -->
               <div class="mt-auto pt-4">
-                <a
-                  href="#"
-                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                <button
+                  onclick="showPaymentMethodModal()"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition w-full"
                 >
                   Rent Now
                   <i class="fas fa-chevron-right ml-2"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -638,7 +639,7 @@
               />
               <!-- Availability Badge -->
               <span
-                class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+                class="absolute top-4 left-4 bg-green-600 text-Laccent text-xs font-semibold uppercase px-2 py-1 rounded"
               >
                 Available
               </span>
@@ -690,13 +691,13 @@
 
               <!-- Rent Button -->
               <div class="mt-auto pt-4">
-                <a
-                  href="#"
-                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition"
+                <button
+                  onclick="showPaymentMethodModal()"
+                  class="inline-flex items-center justify-center bg-Lprimary text-Ltext font-medium rounded-full px-5 py-3 hover:bg-green-700 transition w-full"
                 >
                   Rent Now
                   <i class="fas fa-chevron-right ml-2"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -718,7 +719,7 @@
               />
               <!-- Rented Badge -->
               <span
-                class="absolute top-4 left-4 bg-red-600 text-white text-xs font-semibold uppercase px-2 py-1 rounded"
+                class="absolute top-4 left-4 bg-red-600 text-Ltext text-xs font-semibold uppercase px-2 py-1 rounded"
               >
                 Rented
               </span>
@@ -769,7 +770,7 @@
               </div>
 
               <!-- Disabled Button -->
-              <div class="mt-auto pt-4">
+              <div class="mt-auto pt-4 inline-flex items-center justify-center">
                 <button
                   class="inline-flex items-center justify-center bg-gray-400 text-white font-medium rounded-full px-5 py-3 cursor-not-allowed"
                   disabled
@@ -889,7 +890,116 @@
       </div>
     </div>
 
+    <!-- Add this modal HTML before the footer -->
+    <div
+      id="paymentMethodModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="bg-white rounded-xl p-6 max-w-md mx-auto mt-20">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Select Payment Method</h3>
+          <button
+            onclick="closePaymentMethodModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            &times;
+          </button>
+        </div>
+
+        <!-- Saved GCash Method -->
+        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <i class="fas fa-wallet text-green-600 mr-2"></i>
+              <span class="font-medium">Saved GCash Account</span>
+            </div>
+            <span class="text-sm text-gray-500">Default</span>
+          </div>
+          <p class="text-sm text-gray-600">
+            ⚠️ 09XX XXX <strong>1234</strong> (Expires in 10:00)
+          </p>
+        </div>
+
+        <!-- Payment Options -->
+        <div class="space-y-3">
+          <button
+            onclick="useSavedPayment()"
+            class="w-full bg-Lprimary text-white py-3 rounded-lg hover:bg-green-700 flex items-center justify-center"
+          >
+            <i class="fas fa-check-circle mr-2"></i>
+            Use Saved GCash
+          </button>
+
+          <a
+            href="rentprocess.html"
+            class="block w-full border-2 border-Lprimary text-Lprimary py-3 rounded-lg hover:bg-Lprimary hover:text-black transition flex items-center justify-center"
+          >
+            <i class="fas fa-qrcode mr-2"></i>
+            Manual GCash Payment
+          </a>
+        </div>
+
+        <!-- Cancel Button -->
+        <button
+          onclick="closePaymentMethodModal()"
+          class="w-full mt-4 text-gray-600 hover:text-gray-800 text-sm"
+        >
+          Cancel Rental
+        </button>
+      </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div
+      id="successModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+    >
+      <div class="bg-white p-8 rounded-xl max-w-md mx-auto mt-20">
+        <div class="text-center">
+          <i class="fas fa-check-circle text-6xl text-green-600 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Payment Successful!</h3>
+          <p class="mb-4">Your bike rental is now confirmed.</p>
+          <a
+            href="dashboard.html"
+            class="bg-Lprimary text-white px-6 py-2 rounded-lg hover:bg-green-700"
+          >
+            View Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+
     <script>
+      // Payment Method Modal Functions
+      function showPaymentMethodModal() {
+        document
+          .getElementById("paymentMethodModal")
+          .classList.remove("hidden");
+      }
+
+      function closePaymentMethodModal() {
+        document.getElementById("paymentMethodModal").classList.add("hidden");
+      }
+
+      function useSavedPayment() {
+        // Add your payment processing logic here
+        closePaymentMethodModal();
+        showSuccessMethodModal();
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("paymentMethodModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closePaymentMethodModal();
+          }
+        });
+
+      function showSuccessMethodModal() {
+        document.getElementById("successModal").classList.remove("hidden");
+      }
+
       // Global variables
       const mobileMenuButton = document.getElementById("mobileMenuButton");
       const mobileMenu = document.getElementById("mobileMenu");
@@ -1169,5 +1279,22 @@
         cards.forEach((c) => c.classList.remove("hidden"));
       });
     </script>
+    <style>
+      /* Add custom animation for modal */
+      #paymentMethodModal {
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
   </body>
 </html>
